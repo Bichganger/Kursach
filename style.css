@@ -1,0 +1,36 @@
+body{
+    background-color: black;
+}
+.bg-image {
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding-top: 80px;
+  }
+
+  .navbar {
+    z-index: 1000;
+  }
+
+  /* Добавим небольшой оверлей для лучшей читаемости текста на фоне */
+  .bg-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Затемнение фона */
+  }
+
+  .bg-image>.container {
+    position: relative; /* Чтобы текст был поверх оверлея */
+    z-index: 1;
+  }
+li>a{
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    transition: background-color 0.3s ease;
+  }
