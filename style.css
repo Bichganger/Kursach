@@ -1,36 +1,103 @@
-body{
-    background-color: black;
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  color: #333;
 }
-.bg-image {
-    height: 500px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    padding-top: 80px;
-  }
 
-  .navbar {
-    z-index: 1000;
-  }
+/* Header Styles */
+.car-header {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
 
-  /* Добавим небольшой оверлей для лучшей читаемости текста на фоне */
-  .bg-image::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Затемнение фона */
-  }
+/* Carousel Styles */
+#headerCarousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Под оверлеем и контентом */
+}
 
-  .bg-image>.container {
-    position: relative; /* Чтобы текст был поверх оверлея */
-    z-index: 1;
-  }
-li>a{
-    color: white;
-    text-decoration: none;
-    padding: 15px 20px;
-    transition: background-color 0.3s ease;
-  }
+.carousel-inner {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-item {
+  height: 100vh; /* Убедитесь, что каждый слайд занимает всю высоту */
+}
+
+/*  Класс object-fit-cover, чтобы не дублировать его в каждом img*/
+.object-fit-cover {
+  object-fit: cover; /* Растягивает или сжимает изображение, сохраняя пропорции и заполняя контейнер */
+  width: 100%;
+  height: 100%;
+}
+
+.header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1; /* Над слайдером, под контентом */
+}
+
+.header-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 2; /* Над слайдером и оверлеем */
+  width: 80%;
+}
+
+.logo {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.car-header h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.car-header p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #e43a19;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #b82e12;
+}
+
+/* Main Content Styles (example) */
+main {
+  padding: 20px;
+}
+
+#explore {
+  text-align: center;
+}
