@@ -101,3 +101,27 @@ main {
 #explore {
   text-align: center;
 }
+img{
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.fotki{
+  width: 1920px;
+  height: 1080px;
+}
+.block{
+  background-image: url(img/photo_2025-02-16_21-06-01.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 1080px;
+  /* width: 1920px; */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+.logo{
+  
+}

@@ -8,13 +8,157 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="style.css">
+  <style>
+    body{
+        color: white;
+    }
+
+  </style>
 </head>
 
-<body>
+<body class="bg-dark">
+    <header>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg sticky-top" >
+        <div class="container-fluid">
+          <a class="navbar-brand text-light" href="#"><i class="bi bi-car-front"></i>Bayerische Motoren Werke</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Переключатель навигации">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    </div>
+    
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active text-light" href="#">Details</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active text-light" href="#">Contact</a>
+              </li>
+              <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Выпадающий список ссылкой
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Действие</a></li>
+                  <li><a class="dropdown-item" href="#">Другое действие</a></li>
+                  <li><a class="dropdown-item" href="#">Что-то еще здесь</a></li>
+                </ul>
+              </li> -->
+            </ul>
+          </div>
+        </div>
+      </nav>
+</header>
+<main>
+    <div class="container-fluid">
+        <div class="block">
+            <h1 class="logo">BMW M5 F90</h1>
+            <button class="btn btn-primary">View Venchil</button>
+        </div>
+            <!-- <img class="w-100" src="img/photo_2025-02-16_20-56-24.jpg" alt=""> -->
+    </div>
+</main>
+
+    <div class="card-title">
+        <div id="carouselExampleIndicators" class="carousel slide" style="width: 50;" >
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/DeWatermark.ai_1739258980187.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Предыдущий</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Следующий</span>
+            </button>
+          </div>
+    </div>
 
 
-  <header class="car-header">
-    <!-- Слайдер -->
+
+    <!-- <div id="carouselExampleIndicators" class="carousel slide" >
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="img/DeWatermark.ai_1739258916641.png" class="d-block fotki" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="img/DeWatermark.ai_1739258977275.png" class="d-block fotki" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="img/DeWatermark.ai_1739258980187.png" class="d-block fotki" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Предыдущий</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Следующий</span>
+        </button>
+      </div> -->
+
+
+
+
+<!-- 
+  <header class="car-header one sticky-top">   
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Панель навигации</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Переключатель навигации">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Главная</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Рекомендуемые</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Цена</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Выпадающий список ссылкой
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Действие</a></li>
+                  <li><a class="dropdown-item" href="#">Другое действие</a></li>
+                  <li><a class="dropdown-item" href="#">Что-то еще здесь</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>    
+        </div>
+      </nav>
+    </header>
+    
     <div id="headerCarousel" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -39,20 +183,77 @@
 
     <div class="header-overlay"></div>
     <div class="header-content">
-        <img src="" alt="BMW Logo" class="logo">
+         <img src="" alt="BMW Logo" class="logo"> 
         <h1>BMW M4: Обуздай Зверя Внутри</h1>
         <p>Не просто автомобиль. Это заявление.  Бескомпромиссная мощность, безупречная управляемость, адреналиновый дизайн.</p>
         <a href="#explore" class="cta-button">Узнать Больше</a>
     </div>
-</header>
+
 
 <main>
-    <!-- Основной контент страницы -->
+    Основной контент страницы 
     <section id="explore">
         <h2>Исследуйте M4</h2>
         <p>Здесь будет информация об автомобиле...</p>
     </section>
-</main>
+</main> -->
+
+    <!-- <div class="container d-flex justify-content-between">
+        <div class="left">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                   <a class="navbar-brand" href="#">Панель навигации</a> 
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Переключатель навигации">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          LOGO
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+        </div>
+        <div class="right">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+           <a class="navbar-brand" href="#">Панель навигации</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Переключатель навигации">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Главная</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Рекомендуемые</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Цена</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Выпадающий список ссылкой
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Действие</a></li>
+                  <li><a class="dropdown-item" href="#">Другое действие</a></li>
+                  <li><a class="dropdown-item" href="#">Что-то еще здесь</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    </div> -->
+    
+
 
   <script src="js/bootstrap.bundle.js"></script>
   <script src="script.js"></script>
