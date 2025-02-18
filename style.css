@@ -1,5 +1,6 @@
 body {
   font-family: 'Arial', sans-serif;
+  font-family: "Bebas Neue", serif;
   margin: 0;
   padding: 0;
   background-color: #f0f0f0;
@@ -171,6 +172,7 @@ img{
   position: relative; /*  Необходимо для позиционирования псевдоэлемента */
     overflow: hidden; /*  Скрываем градиент, выходящий за границы */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    perspective: 1000px;
 }
 
 .card:hover {
@@ -184,7 +186,7 @@ img{
   left: 0;
   width: 100%;
   height: 5px; /* Толщина градиента */
-  background: linear-gradient(to right, #007bff, #6610f2); /* Градиент */
+  background: linear-gradient(to right, #000000, #ff0000); /* Градиент */
   transform: scaleX(0); /* Скрываем градиент по горизонтали */
   transform-origin: left; /* Точка начала масштабирования */
   transition: transform 0.3s ease; /* Плавное появление градиента */
@@ -193,9 +195,102 @@ img{
 .card:hover::before {
   transform: scaleX(1); /* Показываем градиент при наведении */
 }
+.card {
+  transition: transform 0.8s ease; /* Плавный переход */
+}
+
+.card:hover {
+  transform: rotateY(360deg);
+}
 .card-body>h3{
   font-weight: bold;
 }
-.btn{
-  
+h1  {
+  color: #ffffff;
+}
+h2, h3,p{
+  color: #333;
+}
+
+
+/*Галерея*/
+
+
+
+
+/* слайдер */
+.m5-section {
+  background-color: #222; /* Более светлый фон для секции */
+  padding: 50px 0;
+}
+
+.slider-container, .description-container {
+  padding: 20px;
+}
+
+.m5-slider img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.m5-slider {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* Соотношение сторон 16:9 для адаптивности */
+  overflow: hidden;
+}
+
+.m5-slider div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.m5-slider div img {
+  object-fit: cover; /* Заполнение с обрезкой */
+}
+
+.description-container h2 {
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.description-container p {
+  color: #ddd;
+  line-height: 1.6;
+}
+
+.description-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.description-container li {
+  margin-bottom: 10px;
+}
+li{
+  color: white;
+}
+.m5-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.m5-btn:hover {
+  background-color: #0056b3;
+  color: #fff;
 }
