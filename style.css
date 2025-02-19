@@ -199,9 +199,7 @@ img{
   transition: transform 0.8s ease; /* Плавный переход */
 }
 
-.card:hover {
-  transform: rotateY(360deg);
-}
+
 .card-body>h3{
   font-weight: bold;
 }
