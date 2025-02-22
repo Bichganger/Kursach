@@ -55,3 +55,82 @@
         selectedWheels.textContent = this.options[this.selectedIndex].text;
     });
 });*/
+
+//наработки на главный экран
+
+document.querySelectorAll(".draggable").forEach((elem) => {
+    elem.addEventListener("dragstart", (e) => {
+        elem.style.opacity = "0.5";
+        e.dataTransfer.setData("text", getComputedStyle(elem).backgroundColor);
+    });
+    elem.addEventListener("dragend", () => {
+        elem.style.opacity = "1";
+    });
+});
+
+kvadrat.addEventListener("dragover", (e) => {
+    e.preventDefault();
+});
+
+kvadrat.addEventListener("drop", (e) => {
+    e.preventDefault();
+    const color = e.dataTransfer.getData("text");
+
+    if (!nowcolor) {
+        nowcolor = color;
+    } else {
+        nowcolor = mixColors(nowcolor, color);
+    }
+
+    kvadrat.style.backgroundColor = nowcolor;
+    info.textContent = `Текущий цвет: ${nowcolor}`;
+});
+
+document.querySelectorAll(".draggable").forEach((elem) => {
+    elem.addEventListener("dragstart", (e) => {
+        e.dataTransfer.setData("text", getComputedStyle(elem).backgroundColor);
+    });
+});
+
+function hexToRgb(hexColor) {
+    // Удаляем символ #, если он есть
+    hexColor = hexColor.replace("#", "");
+
+    // Разбираем шестнадцатеричный цвет на составляющие
+    const r = parseInt(hexColor.substring(0, 2), 16);
+    const g = parseInt(hexColor.substring(2, 4), 16);
+    const b = parseInt(hexColor.substring(4, 6), 16);
+
+    return { r: r, g: g, b: b };
+}
+
+function mixColors(color1, color2) {
+    // Разбираем цвета на компоненты RGB
+    let rgb1 = null;
+    let rgb2 = null;
+
+    if (color1.startsWith("rgb")) {
+        rgb1 = parseRgb(color1);
+    } else {
+        rgb1 = hexToRgb(color1);
+    }
+
+    if (color2.startsWith("rgb")) {
+        rgb2 = parseRgb(color2);
+    } else {
+        rgb2 = hexToRgb(color2);
+    }
+
+    const mixed = `rgb(${(rgb1.r + rgb2.r) / 2}, ${(rgb1.g + rgb2.g) / 2}, ${(rgb1.b + rgb2.b) / 2})`;
+    return mixed;
+}
+
+function parseRgb(rgbColor) {
+    const result = rgbColor.match(/\d+/g);
+    return {
+        r: parseInt(result[0]),
+        g: parseInt(result[1]),
+        b: parseInt(result[2]),
+    };
+}
+

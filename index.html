@@ -25,7 +25,13 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg sticky-top" >
         <div class="container-fluid">
-          <a class="navbar-brand text-light" href="#"><i class="bi bi-car-front"></i>Bayerische Motoren Werke</a>
+          <a class="navbar-brand text-light" href="#">
+          <i class="bi bi-car-front"></i>
+            <svg>
+                <text x="50%" y="50%" dy=".35em" text-anchor="middle">
+                  Bayerische Motoren Werke
+                </text>
+              </svg></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Переключатель навигации">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -60,14 +66,51 @@
 
 <!-- заставка -->
 <main>
-    <div class="container-fluid position-relative">
-        <div class="bg-image img-fluid block" style="background-image:url(img/главЭкран2.png)">
-            <!-- <h1 class="logo">BMW M5 F90</h1> -->
-            
+  <div class="container-fluid assemble-section">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 style="color: black;">Собери свою BMW M5!</h1>
         </div>
-            <!-- <img class="w-100" src="img/photo_2025-02-16_20-56-24.jpg" alt=""> -->
-             <button type="button" class="btn btn-outline-secondary btn-lg position-absolute bottom-center knopka d-flex">Secondary</button>
     </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div id="partsArea">
+                <!-- Детали -->
+                <img src="img/дверь.png" alt="Дверь" class="draggable" data-part="door">
+                <img src="img/колесо.png" alt="Капот" class="draggable" data-part="hood">
+                <img src="img/капот.png" alt="Колесо" class="draggable" data-part="wheel">
+                <img src="img/дверь.png" alt="Дверь" class="draggable" data-part="door">
+               
+                <!-- ... другие детали ... -->
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div id="dropZone">
+                <!-- Здесь будет "пустой квадрат" -->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="completionModal" tabindex="-1" aria-labelledby="completionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="completionModalLabel">Поздравляем!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Вы успешно собрали BMW M5!
+                    <img src="img/photo_2025-02-16_20-56-24.jpg" id = "modal-image" alt="Собранная M5" class="img-fluid">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
     <!-- карточки -->
@@ -134,11 +177,33 @@
   </div>
 </div>  
 
+<div class="gallery-container">
+  <div class="gallery-track">
+      <div class="gallery-item">
+          <img src="img/внешняя2.png" alt="Изображение 1">
+      </div>
+      <div class="gallery-item">
+          <img src="img/внешняя2.png" alt="Изображение 2">
+      </div>
+      <div class="gallery-item">
+          <img src="img/внешняя2.png" alt="Изображение 3">
+      </div>
+      <div class="gallery-item">
+          <img src="img/внешняя2.png" alt="Изображение 4">
+      </div>
+      <div class="gallery-item">
+          <img src="img/внешняя2.png" alt="Изображение 5">
+      </div>
+      <!-- Добавьте больше изображений -->
+  </div>
+</div>
+
     
  
 
 <script src="js/bootstrap.bundle.js"></script>
   <script src="js/script.js"></script>
+  <script src="js/ScriptNew.js"></script>
 </body>
 
 </html>   

@@ -199,9 +199,7 @@ img{
   transition: transform 0.8s ease; /* Плавный переход */
 }
 
-.card:hover {
-  transform: rotateY(360deg);
-}
+
 .card-body>h3{
   font-weight: bold;
 }
@@ -293,4 +291,174 @@ li{
 .m5-btn:hover {
   background-color: #0056b3;
   color: #fff;
+}
+
+/*Наработки на главный экран*/
+#kvadrat {
+  width: 100%;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.26);
+  border-radius: 5px;
+  background-color: #f8f9fa; /* Светлый фон для карточки */
+}
+
+.draggable {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Круглые элементы */
+  cursor: grab;
+  margin: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.draggable1 { background-color: red; }
+.draggable2 { background-color: green; }
+.draggable3 { background-color: blue; }
+.draggable4 { background-color: yellow; }
+.draggable5 { background-color: purple; }
+.draggable6 { background-color: orange; }
+
+
+.assemble-section {
+  background-color: #f8f9fa;
+  padding: 50px 0;
+}
+
+#partsArea {
+  border: 1px solid #ccc;
+  padding: 20px;
+  min-height: 300px;
+}
+
+#dropZone {
+  width: 100%;
+  height: 300px;
+  border: 2px dashed #aaa;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  color: #aaa;
+  overflow: hidden; /* Обрезаем содержимое, выходящее за пределы */
+  position: relative; /* Для позиционирования загрузчика */
+}
+
+#dropZone img {
+  width: 100%; /* Изображение занимает всю ширину */
+  height: 100%; /* Изображение занимает всю высоту */
+  object-fit: cover; /* Масштабируем изображение с сохранением пропорций и обрезкой */
+  display: none; /* Скрываем изображение по умолчанию */
+}
+
+.draggable {
+  width: 80px; /* Размер деталей */
+  height: auto;
+  cursor: grab;
+  margin: 10px;
+}
+
+.draggable.hidden {
+  display: none; /* Скрываем деталь после перетаскивания */
+}
+
+#dropZone .loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  color: #aaa;
+  display: none; /* Скрываем загрузчик по умолчанию */
+}
+
+/* Анимация загрузки (пример) */
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+#dropZone .loader.active {
+  display: block; /* Показываем загрузчик */
+  animation: spin 1s linear infinite;
+}
+
+#dropZone img.visible {
+  display: block; /* Показываем изображение */
+}
+
+
+
+/*Возможные измения для заголовка*/
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
+svg {
+	font-family: "Russo One", sans-serif;
+	width: 100%; height: 25px;
+}
+svg text {
+	animation: stroke 5s infinite alternate;
+	stroke-width: 2;
+	stroke: #FFFFFF;
+	font-size: 26px;
+}
+@keyframes stroke {
+	0%   {
+		fill: rgba(204,9,9,0); stroke: rgba(255,255,255,1);
+		stroke-dashoffset: 25%; stroke-dasharray: 0 50%; stroke-width: 2;
+	}
+	70%  {fill: rgba(204,9,9,0); stroke: rgba(255,255,255,1); }
+	80%  {fill: rgba(204,9,9,0); stroke: rgba(255,255,255,1); stroke-width: 3; }
+	100% {
+		fill: rgba(204,9,9,1); stroke: rgba(255,255,255,0);
+		stroke-dashoffset: -25%; stroke-dasharray: 50% 0; stroke-width: 0;
+	}
+}
+
+.wrapper {background-color: #000000};
+
+#navbar-nav>a{
+  padding: 5px
+}
+.nav-link{
+  font-size: 28px;
+}
+
+/*Галлерея*/
+
+.gallery-container {
+  width: 100vw; /* Ширина на весь экран */
+  height: 200px; /* Высота галереи */
+  overflow: hidden; /* Скрываем элементы, выходящие за пределы контейнера */
+  position: relative; /* Для позиционирования .gallery-track */
+}
+
+.gallery-track {
+  display: flex; /* Выстраиваем элементы в ряд */
+  animation: scroll 20s linear infinite; /* Запускаем анимацию */
+  width: fit-content; /* Ширина равна сумме ширин элементов */
+}
+
+.gallery-item {
+  width: 150px; /* Ширина элемента */
+  height: 150px; /* Высота элемента */
+  margin: 10px; /* Отступы между элементами */
+  position: relative; /* Для создания пятиугольника */
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Масштабируем изображение с обрезкой */
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); /* Создаем пятиугольник */
+}
+
+/* Анимация движения */
+@keyframes scroll {
+  0% {
+      transform: translateX(0); /* Начальное положение */
+  }
+  100% {
+      transform: translateX(-100%); /* Конечное положение (сдвиг на ширину всех элементов) */
+  }
 }
