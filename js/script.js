@@ -58,7 +58,7 @@
 
 //наработки на главный экран
 
-document.querySelectorAll(".draggable").forEach((elem) => {
+/*document.querySelectorAll(".draggable").forEach((elem) => {
     elem.addEventListener("dragstart", (e) => {
         elem.style.opacity = "0.5";
         e.dataTransfer.setData("text", getComputedStyle(elem).backgroundColor);
@@ -132,5 +132,4 @@ function parseRgb(rgbColor) {
         g: parseInt(result[1]),
         b: parseInt(result[2]),
     };
-}
-
+}*/

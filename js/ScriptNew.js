@@ -64,13 +64,15 @@ document.addEventListener('DOMContentLoaded', function() {
     let partsCount = 0;
     const totalParts = draggableElements.length;
     const carImage = document.createElement('img');
-    carImage.src = 'img/m5_full.png';
+    carImage.src = 'img/DeWatermark.ai_1739258977275.png';
     carImage.alt = 'Собранная M5';
     carImage.classList.add('img-fluid');
+    carImage.style.display = 'none'; // Initially hide the image
     dropZone.appendChild(carImage);
 
     const loader = document.createElement('div');
     loader.classList.add('loader', 'fas', 'fa-spinner');
+    loader.style.display = 'none'; // Initially hide the loader
     dropZone.appendChild(loader);
 
     // Функция для обработки начала перетаскивания
@@ -92,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Обработчик бросания элемента в зону
     function drop(event) {
         event.preventDefault();
-        const id = event.dataTransfer.setData('text/plain');
+        const id = event.dataTransfer.getData('text/plain');
         const draggedElement = document.getElementById(id);
 
         if (draggedElement && !draggedElement.classList.contains('hidden')) {
@@ -101,12 +103,12 @@ document.addEventListener('DOMContentLoaded', function() {
             partsCount++;
             if (partsCount === totalParts) {
                 // Показываем загрузчик
-                loader.classList.add('active');
+                loader.style.display = 'block';
 
                 // Задержка перед показом изображения
                 setTimeout(function() {
-                    loader.classList.remove('active');
-                    carImage.classList.add('visible'); // Показываем изображение
+                    loader.style.display = 'none';
+                    carImage.style.display = 'block'; // Показываем изображение
                 }, 2000); // Задержка 2 секунды
             }
         }
@@ -151,4 +153,63 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     duplicateElements();
+});
+
+/*Слайдер2*/
+document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('carouselExampleSlidesOnly');
+    const descriptionTitle = document.getElementById('description-title');
+    const descriptionText = document.getElementById('description-text');
+    const descriptionList = document.getElementById('description-list');
+
+    const slideDescriptions = [
+        {
+            title: "Интерьер BMW M5 F90",
+            text: "Современный салон.",
+            listItems: ["Удобные сиденья", "Качественные материалы", "Современная приборная панель"]
+        },
+        {
+            title: "Второй слайд с интерьером",
+            text: "Интерьер 2 описание",
+            listItems: ["Что-то еще", "Что-то еще", "Что-то еще"]
+        },
+        {
+            title: "Экстерьер BMW M5 F90",
+            text: "Агрессивный дизайн.",
+            listItems: ["Стильные фары", "Аэродинамический обвес", "Спортивные диски"]
+        },
+        {
+            title: "Второй слайд с экстерьером",
+            text: "Экстерьер 2 описание",
+            listItems: ["Что-то еще", "Что-то еще", "Что-то еще"]
+        }
+    ];
+
+    carousel.addEventListener('slide.bs.carousel', function (event) {
+        const activeSlideIndex = event.to;
+        const { title, text, listItems } = slideDescriptions[activeSlideIndex];
+
+        descriptionTitle.textContent = title;
+        descriptionText.textContent = text;
+
+        // Очищаем список
+        descriptionList.innerHTML = '';
+        // Заполняем список новыми элементами
+        listItems.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            descriptionList.appendChild(li);
+        });
+    });
+
+    // Инициализация описания для первого слайда
+    const firstSlideDescription = slideDescriptions[0];
+    descriptionTitle.textContent = firstSlideDescription.title;
+    descriptionText.textContent = firstSlideDescription.text;
+
+    firstSlideDescription.listItems.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        descriptionList.appendChild(li);
+    });
 });

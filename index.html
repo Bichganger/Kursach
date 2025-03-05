@@ -40,13 +40,13 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
+                <a class="nav-link active text-light underline-one" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active text-light" href="#">Details</a>
+                <a class="nav-link active text-light underline-one" href="#">Details</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active text-light" href="#">Contact</a>
+                <a class="nav-link active text-light underline-one" href="#">Contact</a>
               </li>
               <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -114,7 +114,7 @@
 
 
     <!-- карточки -->
-    <div class=" d-flex justify-content-between kart">
+    <!-- <div class=" d-flex justify-content-between kart">
       <div class="card" style="width: 22rem;">
         <img src="img/загрузка.jpeg" class="card-img-top" alt="...">
         <div class="card-body">
@@ -136,14 +136,43 @@
           <p class="card-text">Полюбуйтесь потрясающей эстетикой BMW M5 F90, сочетающего в себе элегантность и спортивный стиль, что создает неповторимый образ на дороге.</p>
         </div>
       </div>
-    </div>
+    </div> -->
 
+<!-- вариант 2 карточки -->
+<div class="container">
+  <div class="row">
+      <div class="col-12 d-flex flex-column flex-md-row justify-content-between kartochki">
+          <div class="card mb-4 mb-md-0" style="width: 100%; max-width: 22rem;">
+              <img src="img/загрузка.jpeg" class="card-img-top" alt="...">
+              <div class="card-body">
+                  <h3>Роскошный интерьер</h3>
+                  <p class="card-text">Испытайте непревзойденный комфорт благодаря высококачественным материалам и передовым технологиям, созданным для получения исключительных впечатлений от вождения.</p>
+              </div>
+          </div>
 
+          <div class="card mb-4 mb-md-0" style="width: 100%; max-width: 22rem;">
+              <img src="img/движок2.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                  <h3>Мощная производительность</h3>
+                  <p class="card-text">Раскройте динамическую мощь BMW M5 F90 благодаря его высокопроизводительному двигателю, обеспечивающему захватывающую скорость и точность.</p>
+              </div>
+          </div>
+
+          <div class="card mb-4 mb-md-0" style="width: 100%; max-width: 22rem;">
+              <img src="img/внешка2.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                  <h3>Элегантный дизайн</h3>
+                  <p class="card-text">Полюбуйтесь потрясающей эстетикой BMW M5 F90, сочетающего в себе элегантность и спортивный стиль, что создает неповторимый образ на дороге.</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 
 
 
 <!-- слайдер -->
-<div class="container-fluid m5-section">
+<!-- <div class="container-fluid m5-section">
   <div class="row">
       <div class="col-md-6 slider-container">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
@@ -175,8 +204,41 @@
           <a href="#" class="btn m5-btn">Узнать больше</a>
       </div>
   </div>
-</div>  
+</div>   -->
+<!-- слайдер2 -->
+<div class="container-fluid m5-section">
+  <div class="row">
+      <div class="col-md-6 slider-container">
+          <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+              <div class="carousel-inner">
+                  <div class="carousel-item active" data-description="0">
+                      <img src="img/внутренняя1.png" class="d-block w-100" alt="Интерьер 1">
+                  </div>
+                  <div class="carousel-item" data-description="1">
+                      <img src="img/внутреняя2.png" class="d-block w-100" alt="Интерьер 2">
+                  </div>
+                  <div class="carousel-item" data-description="2">
+                      <img src="img/внешняя1.png" class="d-block w-100" alt="Экстерьер 1">
+                  </div>
+                  <div class="carousel-item" data-description="3">
+                      <img src="img/внешняя2.png" class="d-block w-100" alt="Экстерьер 2">
+                  </div>
+              </div>
+          </div>
+      </div>
 
+      <div class="col-md-6 description-container">
+          <h2 id="description-title"></h2>
+          <p id="description-text"></p>
+          <ul id="description-list"></ul>
+          <a href="#" class="btn m5-btn">Узнать больше</a>
+      </div>
+  </div>
+</div>
+
+
+
+<!-- галлерея -->
 <div class="gallery-container">
   <div class="gallery-track">
       <div class="gallery-item">
@@ -198,7 +260,79 @@
   </div>
 </div>
 
-    
+    <!-- футер -->
+<footer class="footer">
+  <div class="owl-carousel">
+
+    <a href="#" class="gallery__photo">
+      <img src="img/внешка.png" alt="" />
+      <div class="gallery__fade">
+        <i class="gallery__icon" data-feather="instagram"></i>
+      </div>
+    </a>
+    <a href="#" class="gallery__photo">
+      <img src="" alt="" />
+      <div class="gallery__fade">
+        <i class="gallery__icon" data-feather="instagram"></i>
+      </div>
+    </a>
+    <a href="#" class="gallery__photo">
+      <img src="" alt="" />
+      <div class="gallery__fade">
+        <i class="gallery__icon" data-feather="instagram"></i>
+      </div>
+    </a>
+    <a href="#" class="gallery__photo">
+      <img src="" alt="" />
+      <div class="gallery__fade">
+        <i class="gallery__icon" data-feather="instagram"></i>
+      </div>
+    </a>
+    <a href="#" class="gallery__photo">
+      <img src="" alt="" />
+      <div class="gallery__fade">
+        <i class="gallery__icon" data-feather="instagram"></i>
+      </div>
+    </a>
+    <a href="#" class="gallery__photo">
+      <img src="" alt="" />
+      <div class="gallery__fade">
+        <i class="gallery__icon" data-feather="instagram"></i>
+      </div>
+    </a>
+
+  </div>
+  <div class="footer__redes">
+    <ul class="footer__redes-wrapper">
+      <li>
+        <a href="#" class="footer__link">
+          <i class="fab fa-facebook-f"></i>
+          facebook
+        </a>
+      </li>
+      <li>
+        <a href="#" class="footer__link">
+          <i class="fab fa-twitter"></i>
+          twitter
+        </a>
+      </li>
+      <li>
+        <a href="#" class="footer__link">
+          <i class="fab fa-instagram"></i>
+          instagram
+        </a>
+      </li>
+      <li>
+        <a href="#" class="footer__link">
+          <i class="fab fa-youtube"></i>
+          youtube
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="separador"></div>
+  <p class="footer__texto">Copyright @ 2022</p>
+</footer>
  
 
 <script src="js/bootstrap.bundle.js"></script>

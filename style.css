@@ -21,7 +21,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* Под оверлеем и контентом */
+  z-index: 0;
+  /* Под оверлеем и контентом */
 }
 
 .carousel-inner {
@@ -30,12 +31,14 @@ body {
 }
 
 .carousel-item {
-  height: 100vh; /* Убедитесь, что каждый слайд занимает всю высоту */
+  height: 100vh;
+  /* Убедитесь, что каждый слайд занимает всю высоту */
 }
 
 /*  Класс object-fit-cover, чтобы не дублировать его в каждом img*/
 .object-fit-cover {
-  object-fit: cover; /* Растягивает или сжимает изображение, сохраняя пропорции и заполняя контейнер */
+  object-fit: cover;
+  /* Растягивает или сжимает изображение, сохраняя пропорции и заполняя контейнер */
   width: 100%;
   height: 100%;
 }
@@ -47,7 +50,8 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1; /* Над слайдером, под контентом */
+  z-index: 1;
+  /* Над слайдером, под контентом */
 }
 
 .header-content {
@@ -57,7 +61,8 @@ body {
   transform: translate(-50%, -50%);
   text-align: center;
   color: white;
-  z-index: 2; /* Над слайдером и оверлеем */
+  z-index: 2;
+  /* Над слайдером и оверлеем */
   width: 80%;
 }
 
@@ -102,15 +107,18 @@ main {
 #explore {
   text-align: center;
 }
-img{
+
+img {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.fotki{
+
+.fotki {
   width: 1920px;
   height: 1080px;
 }
-.block{
+
+.block {
   background-image: url(img/главЭкран2.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -121,23 +129,28 @@ img{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+
 }
+
 .m5-card {
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   border-radius: 10px;
-  overflow: hidden; /* Обрезаем выступающие элементы, чтобы border-radius работал */
+  overflow: hidden;
+  /* Обрезаем выступающие элементы, чтобы border-radius работал */
 }
 
 .m5-card:hover {
-  transform: translateY(-5px); /* Небольшой эффект подъема при наведении */
+  transform: translateY(-5px);
+  /* Небольшой эффект подъема при наведении */
 }
 
 .m5-card .card-img-top {
-  height: 200px; /* Фиксированная высота для изображений */
-  object-fit: cover; /* Масштабирование с обрезкой */
+  height: 200px;
+  /* Фиксированная высота для изображений */
+  object-fit: cover;
+  /* Масштабирование с обрезкой */
 }
 
 /* Черный цвет кнопок и текста для стилистики BMW */
@@ -145,68 +158,91 @@ img{
 .carousel-control-next {
   color: black;
 }
-.carousel-indicators li{
+
+.carousel-indicators li {
   background-color: black;
 }
+
 /* Общее выравнивание */
 .card-body {
-  text-align: center; /* Выравнивание текста в карточке по центру */
+  text-align: center;
+  /* Выравнивание текста в карточке по центру */
 }
-.image{
+
+.image {
   width: 1600px;
   height: 900px;
   margin: 0 auto;
 }
-.carousel-caption{
+
+.carousel-caption {
   width: 1600px;
   height: 100px;
   border: 3px solid white;
   margin: 48px -61px;
   background-color: #333;
 }
-.kart{
+
+.kart {
   margin: 50px;
   padding: 15px;
 }
+
 .card {
-  position: relative; /*  Необходимо для позиционирования псевдоэлемента */
-    overflow: hidden; /*  Скрываем градиент, выходящий за границы */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    perspective: 1000px;
+  position: relative;
+  /*  Необходимо для позиционирования псевдоэлемента */
+  overflow: hidden;
+  /*  Скрываем градиент, выходящий за границы */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  perspective: 1000px;
 }
 
 .card:hover {
   transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+
 .card::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 5px; /* Толщина градиента */
-  background: linear-gradient(to right, #000000, #ff0000); /* Градиент */
-  transform: scaleX(0); /* Скрываем градиент по горизонтали */
-  transform-origin: left; /* Точка начала масштабирования */
-  transition: transform 0.3s ease; /* Плавное появление градиента */
+  height: 5px;
+  /* Толщина градиента */
+  background: linear-gradient(to right, #000000, #ff0000);
+  /* Градиент */
+  transform: scaleX(0);
+  /* Скрываем градиент по горизонтали */
+  transform-origin: left;
+  /* Точка начала масштабирования */
+  transition: transform 0.3s ease;
+  /* Плавное появление градиента */
   z-index: 1;
 }
+
 .card:hover::before {
-  transform: scaleX(1); /* Показываем градиент при наведении */
+  transform: scaleX(1);
+  /* Показываем градиент при наведении */
 }
+
 .card {
-  transition: transform 0.8s ease; /* Плавный переход */
+  transition: transform 0.8s ease;
+  /* Плавный переход */
 }
 
 
-.card-body>h3{
+.card-body>h3 {
   font-weight: bold;
 }
-h1  {
+
+h1 {
   color: #ffffff;
 }
-h2, h3,p{
+
+h2,
+h3,
+p {
   color: #333;
 }
 
@@ -218,11 +254,14 @@ h2, h3,p{
 
 /* слайдер */
 .m5-section {
-  background-color: #222; /* Более светлый фон для секции */
+  background-color: #222;
+  /* Более светлый фон для секции */
   padding: 50px 0;
+  height: 750px;
 }
 
-.slider-container, .description-container {
+.slider-container,
+.description-container {
   padding: 20px;
 }
 
@@ -237,7 +276,8 @@ h2, h3,p{
   position: relative;
   width: 100%;
   height: 0;
-  padding-bottom: 56.25%; /* Соотношение сторон 16:9 для адаптивности */
+  padding-bottom: 56.25%;
+  /* Соотношение сторон 16:9 для адаптивности */
   overflow: hidden;
 }
 
@@ -250,7 +290,8 @@ h2, h3,p{
 }
 
 .m5-slider div img {
-  object-fit: cover; /* Заполнение с обрезкой */
+  object-fit: cover;
+  /* Заполнение с обрезкой */
 }
 
 .description-container h2 {
@@ -274,9 +315,11 @@ h2, h3,p{
 .description-container li {
   margin-bottom: 10px;
 }
-li{
+
+li {
   color: white;
 }
+
 .m5-btn {
   background-color: #007bff;
   color: #fff;
@@ -292,6 +335,12 @@ li{
   background-color: #0056b3;
   color: #fff;
 }
+.kartochki{
+  height: 600px;
+margin-top: 20px;
+margin-bottom: 20px;
+}
+
 
 /*Наработки на главный экран*/
 #kvadrat {
@@ -299,24 +348,43 @@ li{
   height: 300px;
   border: 1px solid rgba(0, 0, 0, 0.26);
   border-radius: 5px;
-  background-color: #f8f9fa; /* Светлый фон для карточки */
+  background-color: #f8f9fa;
+  /* Светлый фон для карточки */
 }
 
 .draggable {
   width: 50px;
   height: 50px;
-  border-radius: 50%; /* Круглые элементы */
+  border-radius: 50%;
+  /* Круглые элементы */
   cursor: grab;
   margin: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.draggable1 { background-color: red; }
-.draggable2 { background-color: green; }
-.draggable3 { background-color: blue; }
-.draggable4 { background-color: yellow; }
-.draggable5 { background-color: purple; }
-.draggable6 { background-color: orange; }
+.draggable1 {
+  background-color: red;
+}
+
+.draggable2 {
+  background-color: green;
+}
+
+.draggable3 {
+  background-color: blue;
+}
+
+.draggable4 {
+  background-color: yellow;
+}
+
+.draggable5 {
+  background-color: purple;
+}
+
+.draggable6 {
+  background-color: orange;
+}
 
 
 .assemble-section {
@@ -340,26 +408,34 @@ li{
   align-items: center;
   font-size: 1.5em;
   color: #aaa;
-  overflow: hidden; /* Обрезаем содержимое, выходящее за пределы */
-  position: relative; /* Для позиционирования загрузчика */
+  overflow: hidden;
+  /* Обрезаем содержимое, выходящее за пределы */
+  position: relative;
+  /* Для позиционирования загрузчика */
 }
 
 #dropZone img {
-  width: 100%; /* Изображение занимает всю ширину */
-  height: 100%; /* Изображение занимает всю высоту */
-  object-fit: cover; /* Масштабируем изображение с сохранением пропорций и обрезкой */
-  display: none; /* Скрываем изображение по умолчанию */
+  width: 100%;
+  /* Изображение занимает всю ширину */
+  height: 100%;
+  /* Изображение занимает всю высоту */
+  object-fit: cover;
+  /* Масштабируем изображение с сохранением пропорций и обрезкой */
+  display: none;
+  /* Скрываем изображение по умолчанию */
 }
 
 .draggable {
-  width: 80px; /* Размер деталей */
+  width: 80px;
+  /* Размер деталей */
   height: auto;
   cursor: grab;
   margin: 10px;
 }
 
 .draggable.hidden {
-  display: none; /* Скрываем деталь после перетаскивания */
+  display: none;
+  /* Скрываем деталь после перетаскивания */
 }
 
 #dropZone .loader {
@@ -369,22 +445,30 @@ li{
   transform: translate(-50%, -50%);
   font-size: 2em;
   color: #aaa;
-  display: none; /* Скрываем загрузчик по умолчанию */
+  display: none;
+  /* Скрываем загрузчик по умолчанию */
 }
 
 /* Анимация загрузки (пример) */
 @keyframes spin {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 #dropZone .loader.active {
-  display: block; /* Показываем загрузчик */
+  display: block;
+  /* Показываем загрузчик */
   animation: spin 1s linear infinite;
 }
 
 #dropZone img.visible {
-  display: block; /* Показываем изображение */
+  display: block;
+  /* Показываем изображение */
 }
 
 
@@ -393,72 +477,507 @@ li{
 @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
 
 svg {
-	font-family: "Russo One", sans-serif;
-	width: 100%; height: 25px;
+  font-family: "Russo One", sans-serif;
+  width: 100%;
+  height: 25px;
 }
+
 svg text {
-	animation: stroke 5s infinite alternate;
-	stroke-width: 2;
-	stroke: #FFFFFF;
-	font-size: 26px;
+  animation: stroke 5s infinite alternate;
+  stroke-width: 2;
+  stroke: #FFFFFF;
+  font-size: 26px;
 }
+
 @keyframes stroke {
-	0%   {
-		fill: rgba(204,9,9,0); stroke: rgba(255,255,255,1);
-		stroke-dashoffset: 25%; stroke-dasharray: 0 50%; stroke-width: 2;
-	}
-	70%  {fill: rgba(204,9,9,0); stroke: rgba(255,255,255,1); }
-	80%  {fill: rgba(204,9,9,0); stroke: rgba(255,255,255,1); stroke-width: 3; }
-	100% {
-		fill: rgba(204,9,9,1); stroke: rgba(255,255,255,0);
-		stroke-dashoffset: -25%; stroke-dasharray: 50% 0; stroke-width: 0;
-	}
+  0% {
+    fill: rgba(204, 9, 9, 0);
+    stroke: rgba(255, 255, 255, 1);
+    stroke-dashoffset: 25%;
+    stroke-dasharray: 0 50%;
+    stroke-width: 2;
+  }
+
+  70% {
+    fill: rgba(204, 9, 9, 0);
+    stroke: rgba(255, 255, 255, 1);
+  }
+
+  80% {
+    fill: rgba(204, 9, 9, 0);
+    stroke: rgba(255, 255, 255, 1);
+    stroke-width: 3;
+  }
+
+  100% {
+    fill: rgba(204, 9, 9, 1);
+    stroke: rgba(255, 255, 255, 0);
+    stroke-dashoffset: -25%;
+    stroke-dasharray: 50% 0;
+    stroke-width: 0;
+  }
 }
 
-.wrapper {background-color: #000000};
+.wrapper {
+  background-color: #000000
+}
 
-#navbar-nav>a{
+;
+
+#navbar-nav>a {
   padding: 5px
 }
-.nav-link{
+
+.nav-link {
   font-size: 28px;
 }
 
 /*Галлерея*/
 
 .gallery-container {
-  width: 100vw; /* Ширина на весь экран */
-  height: 200px; /* Высота галереи */
-  overflow: hidden; /* Скрываем элементы, выходящие за пределы контейнера */
-  position: relative; /* Для позиционирования .gallery-track */
+  width: 100vw;
+  /* Ширина на весь экран */
+  height: 200px;
+  /* Высота галереи */
+  overflow: hidden;
+  /* Скрываем элементы, выходящие за пределы контейнера */
+  position: relative;
+  /* Для позиционирования .gallery-track */
 }
 
 .gallery-track {
-  display: flex; /* Выстраиваем элементы в ряд */
-  animation: scroll 20s linear infinite; /* Запускаем анимацию */
-  width: fit-content; /* Ширина равна сумме ширин элементов */
+  display: flex;
+  /* Выстраиваем элементы в ряд */
+  animation: scroll 20s linear infinite;
+  /* Запускаем анимацию */
+  width: fit-content;
+  /* Ширина равна сумме ширин элементов */
 }
 
 .gallery-item {
-  width: 150px; /* Ширина элемента */
-  height: 150px; /* Высота элемента */
-  margin: 10px; /* Отступы между элементами */
-  position: relative; /* Для создания пятиугольника */
+  width: 150px;
+  /* Ширина элемента */
+  height: 150px;
+  /* Высота элемента */
+  margin: 10px;
+  /* Отступы между элементами */
+  position: relative;
+  /* Для создания пятиугольника */
 }
 
 .gallery-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Масштабируем изображение с обрезкой */
-  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); /* Создаем пятиугольник */
+  object-fit: cover;
+  /* Масштабируем изображение с обрезкой */
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  /* Создаем пятиугольник */
 }
 
 /* Анимация движения */
 @keyframes scroll {
   0% {
-      transform: translateX(0); /* Начальное положение */
+    transform: translateX(0);
+    /* Начальное положение */
   }
+
   100% {
-      transform: translateX(-100%); /* Конечное положение (сдвиг на ширину всех элементов) */
+    transform: translateX(-100%);
+    /* Конечное положение (сдвиг на ширину всех элементов) */
   }
+}
+
+/*ccылки в header*/
+.underline-one {
+  color: #00bfff;
+  /* Цвет обычной ссылки */
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  /* Убираем подчеркивание */
+}
+
+.underline-one:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  /* Высота линии */
+  background-color: black;
+  /* Цвет подчеркивания при исчезании линии*/
+  transition: width 0.5s;
+  /* Время эффекта */
+}
+
+.underline-one:hover:after {
+  content: "";
+  width: 100%;
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 2px;
+  /* Высота линии */
+  background-color: red;
+  /* Цвет подчеркивания при появлении линии*/
+  transition: width 0.5s;
+  /* Время эффекта */
+}
+
+/*слайдер2*/
+.description-container {
+  padding: 20px;
+  text-align: center;
+  /* Выравниваем текст по центру */
+}
+
+.description-container h2 {
+  margin-bottom: 15px;
+}
+
+.description-container ul {
+  list-style: none;
+  /* Убираем маркеры списка */
+  padding: 0;
+  /* Убираем отступы списка */
+}
+
+.description-container li {
+  margin-bottom: 5px;
+  /* Добавляем отступы между элементами списка */
+}
+
+
+/*футер*/
+:root {
+  --text-font: "Hind", sans-serif;
+  --title-font: "Montserrat", sans-serif;
+  --white: #fff;
+  --dark: #141414;
+  --dark-fade: rgba(0, 0, 0, 0.35);
+  --gray: #707070;
+  --light-gray: #a1a1a1;
+  --faded-gray: #e0e0e0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--text-font);
+  color: var(--dark);
+}
+
+img {
+  width: 100%;
+  vertical-align: top;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer {
+  margin-top: 80px;
+}
+
+.footer__redes-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 600px;
+  margin: 45px auto;
+}
+
+.footer__redes-wrapper li {
+  display: inline-block;
+}
+
+.footer__redes-wrapper li:hover {
+  color: var(--gray);
+}
+
+.footer__link {
+  text-transform: uppercase;
+  font-family: var(--title-font);
+  font-size: rem(14);
+}
+
+.footer .fab {
+  margin-right: 8px;
+}
+
+.footer__texto {
+  color: var(--light-gray);
+  text-align: center;
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.gallery__photo {
+  position: relative;
+  display: inline-block;
+}
+
+.gallery__fade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dark-fade);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+}
+
+.gallery__fade:hover {
+  opacity: 1;
+}
+
+.gallery__icon {
+  color: #fff;
+  width: 50px;
+  height: 50px;
+}
+
+.separador {
+  background-color: var(--faded-gray);
+  height: 2px;
+  max-width: 30px;
+  margin: 15px auto 20px;
+}
+
+.footer__redes-wrapper li,
+.gallery__fade {
+  transition: all ease 0.3s;
+}
+
+/** * Owl Carousel v2.3.4 * Copyright 2013-2018 David Deutsch * Licensed under: SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE */
+.owl-carousel,
+.owl-carousel .owl-item {
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+.owl-carousel {
+  display: none;
+  width: 100%;
+  z-index: 1;
+}
+
+.owl-carousel .owl-stage {
+  position: relative;
+  -ms-touch-action: pan-Y;
+  touch-action: manipulation;
+  -moz-backface-visibility: hidden;
+}
+
+.owl-carousel .owl-stage:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.owl-carousel .owl-stage-outer {
+  position: relative;
+  overflow: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+.owl-carousel .owl-item,
+.owl-carousel .owl-wrapper {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+}
+
+.owl-carousel .owl-item {
+  min-height: 1px;
+  float: left;
+  -webkit-backface-visibility: hidden;
+  -webkit-touch-callout: none;
+}
+
+.owl-carousel .owl-item img {
+  display: block;
+  width: 100%;
+}
+
+.owl-carousel .owl-dots.disabled,
+.owl-carousel .owl-nav.disabled {
+  display: none;
+}
+
+.no-js .owl-carousel,
+.owl-carousel.owl-loaded {
+  display: block;
+}
+
+.owl-carousel .owl-dot,
+.owl-carousel .owl-nav .owl-next,
+.owl-carousel .owl-nav .owl-prev {
+  cursor: pointer;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.owl-carousel .owl-nav button.owl-next,
+.owl-carousel .owl-nav button.owl-prev,
+.owl-carousel button.owl-dot {
+  background: 0 0;
+  color: inherit;
+  border: none;
+  padding: 0 !important;
+  font: inherit;
+}
+
+.owl-carousel.owl-loading {
+  opacity: 0;
+  display: block;
+}
+
+.owl-carousel.owl-hidden {
+  opacity: 0;
+}
+
+.owl-carousel.owl-refresh .owl-item {
+  visibility: hidden;
+}
+
+.owl-carousel.owl-drag .owl-item {
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.owl-carousel.owl-grab {
+  cursor: move;
+  cursor: grab;
+}
+
+.owl-carousel.owl-rtl {
+  direction: rtl;
+}
+
+.owl-carousel.owl-rtl .owl-item {
+  float: right;
+}
+
+.owl-carousel .animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.owl-carousel .owl-animated-in {
+  z-index: 0;
+}
+
+.owl-carousel .owl-animated-out {
+  z-index: 1;
+}
+
+.owl-carousel .fadeOut {
+  animation-name: fadeOut;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.owl-height {
+  transition: height 0.5s ease-in-out;
+}
+
+.owl-carousel .owl-item .owl-lazy {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.owl-carousel .owl-item .owl-lazy:not([src]),
+.owl-carousel .owl-item .owl-lazy[src^=""] {
+  max-height: 0;
+}
+
+.owl-carousel .owl-item img.owl-lazy {
+  transform-style: preserve-3d;
+}
+
+.owl-carousel .owl-video-wrapper {
+  position: relative;
+  height: 100%;
+  background: #000;
+}
+
+.owl-carousel .owl-video-play-icon {
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  left: 50%;
+  top: 50%;
+  margin-left: -40px;
+  margin-top: -40px;
+  background: url(owl.video.play.png) no-repeat;
+  cursor: pointer;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  transition: transform 0.1s ease;
+}
+
+.owl-carousel .owl-video-play-icon:hover {
+  -ms-transform: scale(1.3, 1.3);
+  transform: scale(1.3, 1.3);
+}
+
+.owl-carousel .owl-video-playing .owl-video-play-icon,
+.owl-carousel .owl-video-playing .owl-video-tn {
+  display: none;
+}
+
+.owl-carousel .owl-video-tn {
+  opacity: 0;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: opacity 0.4s ease;
+}
+
+.owl-carousel .owl-video-frame {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
 }
