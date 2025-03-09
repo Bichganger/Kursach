@@ -58,22 +58,12 @@
 
 //наработки на главный экран
 document.addEventListener('DOMContentLoaded', function() {
-    const partsArea = document.getElementById('partsArea');
-    const dropZone = document.getElementById('dropZone');
+    const partsAreaContainer = document.getElementById('partsAreaContainer');
+    const dropZoneContainer = document.getElementById('dropZoneContainer');
+    const finalImageContainer = document.getElementById('finalImageContainer');
     const draggableElements = document.querySelectorAll('.draggable');
     let partsCount = 0;
     const totalParts = draggableElements.length;
-    const carImage = document.createElement('img');
-    carImage.src = 'img/DeWatermark.ai_1739258977275.png';
-    carImage.alt = 'Собранная M5';
-    carImage.classList.add('img-fluid');
-    carImage.style.display = 'none'; // Initially hide the image
-    dropZone.appendChild(carImage);
-
-    const loader = document.createElement('div');
-    loader.classList.add('loader', 'fas', 'fa-spinner');
-    loader.style.display = 'none'; // Initially hide the loader
-    dropZone.appendChild(loader);
 
     // Функция для обработки начала перетаскивания
     function dragStart(event) {
@@ -102,14 +92,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             partsCount++;
             if (partsCount === totalParts) {
-                // Показываем загрузчик
-                loader.style.display = 'block';
+                // Скрываем контейнеры с деталями и зоной перетаскивания
+                partsAreaContainer.style.display = 'none';
+                dropZoneContainer.style.display = 'none';
 
-                // Задержка перед показом изображения
-                setTimeout(function() {
-                    loader.style.display = 'none';
-                    carImage.style.display = 'block'; // Показываем изображение
-                }, 2000); // Задержка 2 секунды
+                // Показываем контейнер с финальным изображением
+                finalImageContainer.style.display = 'block'; // Или 'block'
             }
         }
     }
@@ -169,9 +157,9 @@ document.addEventListener('DOMContentLoaded', function() {
             listItems: ["Удобные сиденья", "Качественные материалы", "Современная приборная панель"]
         },
         {
-            title: "Второй слайд с интерьером",
-            text: "Интерьер 2 описание",
-            listItems: ["Что-то еще", "Что-то еще", "Что-то еще"]
+            title: "BMW M5 F90: ",
+            text: "Интерьер, где роскошь встречается с динамикой",
+            listItems: ["Премиальные материалы", "спортивные элементы", "передовые технологии"]
         },
         {
             title: "Экстерьер BMW M5 F90",
@@ -179,9 +167,9 @@ document.addEventListener('DOMContentLoaded', function() {
             listItems: ["Стильные фары", "Аэродинамический обвес", "Спортивные диски"]
         },
         {
-            title: "Второй слайд с экстерьером",
-            text: "Экстерьер 2 описание",
-            listItems: ["Что-то еще", "Что-то еще", "Что-то еще"]
+            title: "Узнаваемый силуэт BMW M5 F90",
+            text: "Легендарное семейство M",
+            listItems: ["решетка радиатора M", "спортивные зеркала", "выразительные воздухозаборники"]
         }
     ];
 
@@ -212,4 +200,26 @@ document.addEventListener('DOMContentLoaded', function() {
         li.textContent = item;
         descriptionList.appendChild(li);
     });
+});
+
+//анимация галлереи
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.querySelector('.gallery-track');
+    const itemWidth = document.querySelector('.gallery-item').offsetWidth + 30; // Ширина элемента + margin
+    const trackWidth = track.offsetWidth;
+    let currentPosition = 0;
+
+    function animate() {
+        currentPosition -= 1,5; // Скорость анимации (можно менять)
+        track.style.transform = `translateX(${currentPosition}px)`;
+
+        // Когда доходим до конца, перемещаем в начало
+        if (Math.abs(currentPosition) > trackWidth) {
+            currentPosition = 0; // Возвращаем в начало
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
 });

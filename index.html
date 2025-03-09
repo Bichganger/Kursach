@@ -66,7 +66,7 @@
 
 <!-- заставка -->
 <main>
-  <div class="container-fluid assemble-section">
+  <!-- <div class="container-fluid assemble-section">
     <div class="row">
         <div class="col-12 text-center">
             <h1 style="color: black;">Собери свою BMW M5!</h1>
@@ -76,19 +76,19 @@
     <div class="row">
         <div class="col-md-6">
             <div id="partsArea">
-                <!-- Детали -->
+                 Детали 
                 <img src="img/дверь.png" alt="Дверь" class="draggable" data-part="door">
                 <img src="img/колесо.png" alt="Капот" class="draggable" data-part="hood">
                 <img src="img/капот.png" alt="Колесо" class="draggable" data-part="wheel">
                 <img src="img/дверь.png" alt="Дверь" class="draggable" data-part="door">
                
-                <!-- ... другие детали ... -->
+                 ... другие детали ... 
             </div>
         </div>
 
         <div class="col-md-6">
             <div id="dropZone">
-                <!-- Здесь будет "пустой квадрат" -->
+                <!-- Здесь будет "пустой квадрат" 
             </div>
         </div>
     </div>
@@ -110,8 +110,34 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
+<div class="container-fluid assemble-section">
+  <div class="row">
+      <div class="col-md-6" id="partsAreaContainer">
+          <div id="partsArea">
+              <img src="img/дверь.png" alt="Дверь" class="draggable" data-part="door">
+                <img src="img/колесо.png" alt="Капот" class="draggable" data-part="hood">
+                <img src="img/капот.png" alt="Колесо" class="draggable" data-part="wheel">
+                <img src="img/дверь.png" alt="Дверь" class="draggable" data-part="door">
+              <!-- Детали для перетаскивания -->
+          </div>
+      </div>
+
+      <div class="col-md-6" id="dropZoneContainer">
+          <div id="dropZone">
+              <!-- Зона для перетаскивания -->
+          </div>
+      </div>
+  </div>
+
+  <!-- Скрытое изображение для отображения после сборки -->
+  <div class="row" id="finalImageContainer" style="display: none;">
+      <div class="col-12">
+          <img src="img/автомобили_bmw_manhart_900_m5.jpg" alt="Собранная BMW M5" class="img-fluid">
+      </div>
+  </div>
+</div>
 
     <!-- карточки -->
     <!-- <div class=" d-flex justify-content-between kart">
@@ -208,26 +234,26 @@
 <!-- слайдер2 -->
 <div class="container-fluid m5-section">
   <div class="row">
-      <div class="col-md-6 slider-container">
+      <div class="col-md-6 slider-container like">
           <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-              <div class="carousel-inner">
-                  <div class="carousel-item active" data-description="0">
+              <div class="carousel-inner like">
+                  <div class="carousel-item active like" data-description="0">
                       <img src="img/внутренняя1.png" class="d-block w-100" alt="Интерьер 1">
                   </div>
-                  <div class="carousel-item" data-description="1">
+                  <div class="carousel-item like" data-description="1">
                       <img src="img/внутреняя2.png" class="d-block w-100" alt="Интерьер 2">
                   </div>
-                  <div class="carousel-item" data-description="2">
+                  <div class="carousel-item like" data-description="2">
                       <img src="img/внешняя1.png" class="d-block w-100" alt="Экстерьер 1">
                   </div>
-                  <div class="carousel-item" data-description="3">
+                  <div class="carousel-item like" data-description="3">
                       <img src="img/внешняя2.png" class="d-block w-100" alt="Экстерьер 2">
                   </div>
               </div>
           </div>
       </div>
 
-      <div class="col-md-6 description-container">
+      <div class="col-md-6 description-container like">
           <h2 id="description-title"></h2>
           <p id="description-text"></p>
           <ul id="description-list"></ul>
@@ -242,20 +268,35 @@
 <div class="gallery-container">
   <div class="gallery-track">
       <div class="gallery-item">
-          <img src="img/внешняя2.png" alt="Изображение 1">
+          <img src="img/экс1.png" alt="Изображение 1">
       </div>
       <div class="gallery-item">
-          <img src="img/внешняя2.png" alt="Изображение 2">
+          <img src="img/экс2.png" alt="Изображение 2">
       </div>
       <div class="gallery-item">
-          <img src="img/внешняя2.png" alt="Изображение 3">
+          <img src="img/экс3.png" alt="Изображение 3">
       </div>
       <div class="gallery-item">
-          <img src="img/внешняя2.png" alt="Изображение 4">
+          <img src="img/экс4.png" alt="Изображение 4">
       </div>
       <div class="gallery-item">
-          <img src="img/внешняя2.png" alt="Изображение 5">
+          <img src="img/экс5.png" alt="Изображение 5">
       </div>
+      <div class="gallery-item">
+        <img src="img/экс6.png" alt="Изображение 1">
+    </div>
+    <div class="gallery-item">
+        <img src="img/экс7.png" alt="Изображение 2">
+    </div>
+    <div class="gallery-item">
+        <img src="img/экс1.png" alt="Изображение 3">
+    </div>
+    <div class="gallery-item">
+        <img src="img/экс2.png" alt="Изображение 4">
+    </div>
+    <div class="gallery-item">
+        <img src="img/экс3.png" alt="Изображение 5">
+    </div>
       <!-- Добавьте больше изображений -->
   </div>
 </div>
@@ -306,24 +347,28 @@
     <ul class="footer__redes-wrapper">
       <li>
         <a href="#" class="footer__link">
+          <i class="bi bi-facebook"></i>
           <i class="fab fa-facebook-f"></i>
           facebook
         </a>
       </li>
       <li>
         <a href="#" class="footer__link">
+          <i class="bi bi-twitter"></i>
           <i class="fab fa-twitter"></i>
           twitter
         </a>
       </li>
       <li>
         <a href="#" class="footer__link">
+          <i class="bi bi-instagram"></i>
           <i class="fab fa-instagram"></i>
           instagram
         </a>
       </li>
       <li>
         <a href="#" class="footer__link">
+          <i class="bi bi-youtube"></i>
           <i class="fab fa-youtube"></i>
           youtube
         </a>
@@ -331,7 +376,7 @@
     </ul>
   </div>
   <div class="separador"></div>
-  <p class="footer__texto">Copyright @ 2022</p>
+  <p class="footer__texto">Copyright @ 2025</p>
 </footer>
  
 

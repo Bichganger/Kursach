@@ -408,45 +408,36 @@ margin-bottom: 20px;
   align-items: center;
   font-size: 1.5em;
   color: #aaa;
-  overflow: hidden;
-  /* Обрезаем содержимое, выходящее за пределы */
-  position: relative;
-  /* Для позиционирования загрузчика */
+  overflow: hidden; /* Обрезаем содержимое, выходящее за пределы */
 }
 
 #dropZone img {
-  width: 100%;
-  /* Изображение занимает всю ширину */
-  height: 100%;
-  /* Изображение занимает всю высоту */
-  object-fit: cover;
-  /* Масштабируем изображение с сохранением пропорций и обрезкой */
-  display: none;
-  /* Скрываем изображение по умолчанию */
+  width: 100%; /* Изображение занимает всю ширину */
+  height: 100%; /* Изображение занимает всю высоту */
+  object-fit: cover; /* Масштабируем изображение с сохранением пропорций и обрезкой */
 }
 
 .draggable {
-  width: 80px;
-  /* Размер деталей */
+  width: 80px; /* Размер деталей */
   height: auto;
   cursor: grab;
   margin: 10px;
 }
 
 .draggable.hidden {
-  display: none;
-  /* Скрываем деталь после перетаскивания */
+  display: none; /* Скрываем деталь после перетаскивания */
 }
 
-#dropZone .loader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2em;
-  color: #aaa;
-  display: none;
-  /* Скрываем загрузчик по умолчанию */
+#finalImageContainer img {
+  max-height: 70vh; /* Максимальная высота изображения - 50% от высоты экрана */
+  max-width: 100%;
+  object-fit: contain; /*  Масштабируем изображение с сохранением пропорций, помещая его внутрь контейнера */
+}
+
+#finalImageContainer {
+  display: flex;
+  justify-content: center; /* Выравниваем по центру горизонтально */
+  align-items: center; /* Выравниваем по центру вертикально */
 }
 
 /* Анимация загрузки (пример) */
@@ -535,57 +526,34 @@ svg text {
 /*Галлерея*/
 
 .gallery-container {
-  width: 100vw;
-  /* Ширина на весь экран */
-  height: 200px;
-  /* Высота галереи */
-  overflow: hidden;
-  /* Скрываем элементы, выходящие за пределы контейнера */
-  position: relative;
-  /* Для позиционирования .gallery-track */
+  width: 100%;
+  overflow: hidden; /* Скрываем элементы, выходящие за границы */
+  margin-top: 15px;
 }
 
 .gallery-track {
   display: flex;
-  /* Выстраиваем элементы в ряд */
-  animation: scroll 20s linear infinite;
-  /* Запускаем анимацию */
-  width: fit-content;
-  /* Ширина равна сумме ширин элементов */
+  animation: scroll 20s linear infinite; /* Замедлили анимацию */
+  padding-left: 20px; /* Добавили отступ слева для первого элемента */
+  margin-top: 15px;
 }
 
 .gallery-item {
-  width: 150px;
-  /* Ширина элемента */
-  height: 150px;
-  /* Высота элемента */
-  margin: 10px;
-  /* Отступы между элементами */
-  position: relative;
-  /* Для создания пятиугольника */
+  width: 200px; /* Ширина элемента */
+  height: 150px; /* Высота элемента */
+  margin-right: 30px; /* Увеличили пространство между элементами */
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%); /* Трапеция */
+  overflow: hidden; /* Обрезаем содержимое, выходящее за границы */
+  flex-shrink: 0; /* Запрещаем элементам сжиматься */
 }
 
 .gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* Масштабируем изображение с обрезкой */
-  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-  /* Создаем пятиугольник */
+  width: 100%; /* Изображение занимает всю ширину элемента */
+  height: 100%; /* Изображение занимает всю высоту элемента */
+  object-fit: cover; /* Масштабируем изображение с обрезкой */
 }
 
-/* Анимация движения */
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-    /* Начальное положение */
-  }
 
-  100% {
-    transform: translateX(-100%);
-    /* Конечное положение (сдвиг на ширину всех элементов) */
-  }
-}
 
 /*ccылки в header*/
 .underline-one {
@@ -628,6 +596,9 @@ svg text {
 }
 
 /*слайдер2*/
+.like{
+  height: 650px;
+}
 .description-container {
   padding: 20px;
   text-align: center;
@@ -692,11 +663,11 @@ a {
 
 .footer__redes-wrapper {
   display: flex;
-  justify-content: center;
   gap: 40px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   max-width: 600px;
   margin: 45px auto;
+  justify-content: space-between;
 }
 
 .footer__redes-wrapper li {
@@ -784,7 +755,7 @@ a {
   position: relative;
   -ms-touch-action: pan-Y;
   touch-action: manipulation;
-  -moz-backface-visibility: hidden;
+  /* -moz-backface-visibility: hidden; */
 }
 
 .owl-carousel .owl-stage:after {
@@ -799,10 +770,10 @@ a {
 .owl-carousel .owl-stage-outer {
   position: relative;
   overflow: hidden;
-  -webkit-transform: translate3d(0, 0, 0);
+  /*-webkit-transform: translate3d(0, 0, 0);*/
 }
 
-.owl-carousel .owl-item,
+/* .owl-carousel .owl-item,
 .owl-carousel .owl-wrapper {
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
@@ -810,12 +781,12 @@ a {
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
-}
+} */
 
 .owl-carousel .owl-item {
   min-height: 1px;
   float: left;
-  -webkit-backface-visibility: hidden;
+  /* -webkit-backface-visibility: hidden; */
   -webkit-touch-callout: none;
 }
 
@@ -952,7 +923,7 @@ a {
   background: url(owl.video.play.png) no-repeat;
   cursor: pointer;
   z-index: 1;
-  -webkit-backface-visibility: hidden;
+  /* -webkit-backface-visibility: hidden; */
   transition: transform 0.1s ease;
 }
 
