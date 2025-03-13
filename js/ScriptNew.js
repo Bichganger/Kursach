@@ -146,60 +146,97 @@ document.addEventListener('DOMContentLoaded', function() {
 /*Слайдер2*/
 document.addEventListener('DOMContentLoaded', function() {
     const carousel = document.getElementById('carouselExampleSlidesOnly');
+    const carouselInner = carousel.querySelector('.carousel-inner');
+    const carouselItems = carouselInner.querySelectorAll('.carousel-item');
     const descriptionTitle = document.getElementById('description-title');
     const descriptionText = document.getElementById('description-text');
     const descriptionList = document.getElementById('description-list');
+    const sliderContainer = document.querySelector('.slider-container');
+    const descriptionContainer = document.querySelector('.description-container');
 
-    const slideDescriptions = [
+    // Описания для слайдов
+    const descriptions = [
         {
-            title: "Интерьер BMW M5 F90",
-            text: "Современный салон.",
-            listItems: ["Удобные сиденья", "Качественные материалы", "Современная приборная панель"]
+            title: 'Интерьер BMW M5',
+            text: 'Современный и роскошный интерьер.',
+            list: ['Премиальная кожа', 'Спортивные сиденья', 'Цифровая приборная панель']
         },
         {
-            title: "BMW M5 F90: ",
-            text: "Интерьер, где роскошь встречается с динамикой",
-            listItems: ["Премиальные материалы", "спортивные элементы", "передовые технологии"]
+            title: 'Детали интерьера',
+            text: 'Изысканные детали и отделка.',
+            list: ['Высококачественные материалы', 'Эргономичный дизайн']
         },
         {
-            title: "Экстерьер BMW M5 F90",
-            text: "Агрессивный дизайн.",
-            listItems: ["Стильные фары", "Аэродинамический обвес", "Спортивные диски"]
+            title: 'Экстерьер BMW M5',
+            text: 'Агрессивный и динамичный внешний вид.',
+            list: ['Спортивный обвес', 'Легкосплавные диски', 'Фирменная решетка радиатора']
         },
         {
-            title: "Узнаваемый силуэт BMW M5 F90",
-            text: "Легендарное семейство M",
-            listItems: ["решетка радиатора M", "спортивные зеркала", "выразительные воздухозаборники"]
+            title: 'Дизайн экстерьера',
+            text: 'Элегантность и мощь в каждой линии.',
+            list: ['Выразительная оптика', 'Аэродинамические элементы']
         }
     ];
 
-    carousel.addEventListener('slide.bs.carousel', function (event) {
-        const activeSlideIndex = event.to;
-        const { title, text, listItems } = slideDescriptions[activeSlideIndex];
+    let currentIndex = 0; // Текущий индекс слайда
+    const slideDuration = 5000; // Уменьшаем до 3 секунд
 
-        descriptionTitle.textContent = title;
-        descriptionText.textContent = text;
+    // Функция для обновления описания с анимацией
+    function updateDescription(index) {
+        // Анимируем исчезновение старого описания
+        descriptionContainer.classList.add('fade-out');
 
-        // Очищаем список
-        descriptionList.innerHTML = '';
-        // Заполняем список новыми элементами
-        listItems.forEach(item => {
-            const li = document.createElement('li');
-            li.textContent = item;
-            descriptionList.appendChild(li);
-        });
-    });
+        // После исчезновения меняем описание и анимируем появление
+        setTimeout(() => {
+            const description = descriptions[index];
+            descriptionTitle.textContent = description.title;
+            descriptionText.textContent = description.text;
+            descriptionList.innerHTML = ''; // Очищаем список
 
-    // Инициализация описания для первого слайда
-    const firstSlideDescription = slideDescriptions[0];
-    descriptionTitle.textContent = firstSlideDescription.title;
-    descriptionText.textContent = firstSlideDescription.text;
+            description.list.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                descriptionList.appendChild(li);
+            });
 
-    firstSlideDescription.listItems.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        descriptionList.appendChild(li);
-    });
+            descriptionContainer.classList.remove('fade-out');
+            descriptionContainer.classList.add('fade-in');
+        }, 500); // Пауза перед сменой описания
+    }
+
+    // Функция для переключения слайда с анимацией
+    function showSlide(index) {
+        // Анимируем исчезновение старого слайда
+        sliderContainer.classList.add('slide-out');
+
+        // После исчезновения меняем слайд и анимируем появление
+        setTimeout(() => {
+            // Сначала убираем класс active у всех слайдов
+            carouselItems.forEach(item => item.classList.remove('active'));
+
+            // Добавляем класс active только к текущему слайду
+            carouselItems[index].classList.add('active');
+
+            sliderContainer.classList.remove('slide-out');
+            sliderContainer.classList.add('slide-in');
+
+            // Обновляем описание
+            updateDescription(index);
+
+            currentIndex = index; // Обновляем текущий индекс
+
+        }, 500); // Пауза перед сменой слайда
+    }
+
+    // Запускаем слайдер вручную
+    function startCarousel() {
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % carouselItems.length;
+            showSlide(currentIndex);
+        }, slideDuration);
+    }
+
+    startCarousel(); // Запускаем слайдер
 });
 
 //анимация галлереи

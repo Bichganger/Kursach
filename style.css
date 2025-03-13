@@ -527,32 +527,53 @@ svg text {
 
 .gallery-container {
   width: 100%;
-  overflow: hidden; /* Скрываем элементы, выходящие за границы */
-  margin-top: 15px;
+  height: 300px; /* Задайте высоту контейнера */
+  overflow: hidden;
+  background: linear-gradient(to bottom, #333, #111); /* Темный фон */
+  position: relative;
+  padding: 20px 0; /* Добавим отступы сверху и снизу */
 }
 
 .gallery-track {
   display: flex;
-  animation: scroll 20s linear infinite; /* Замедлили анимацию */
-  padding-left: 20px; /* Добавили отступ слева для первого элемента */
-  margin-top: 15px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  perspective: 800px; /* Увеличим перспективу */
+  animation: scroll 25s linear infinite;
+  padding-right: 20px;
 }
 
 .gallery-item {
-  width: 200px; /* Ширина элемента */
-  height: 150px; /* Высота элемента */
-  margin-right: 30px; /* Увеличили пространство между элементами */
-  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%); /* Трапеция */
-  overflow: hidden; /* Обрезаем содержимое, выходящее за границы */
-  flex-shrink: 0; /* Запрещаем элементам сжиматься */
+  width: 200px;
+  height: 150px;
+  margin-left: 30px;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7); /* Более сильные тени */
+  background: linear-gradient(to bottom, rgba(80, 50, 100, 0.8), rgba(40, 20, 60, 0.8)); /* Мягкий градиент */
+  transition: transform 0.3s ease, filter 0.3s ease; /* Добавляем transition для filter */
+  filter: blur(2px); /* Изначальное размытие */
+}
+
+.gallery-item:hover {
+  transform: scale(1.1);
+  filter: blur(0px); /* Убираем размытие при наведении */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.9); /* Усилим тени */
 }
 
 .gallery-item img {
-  width: 100%; /* Изображение занимает всю ширину элемента */
-  height: 100%; /* Изображение занимает всю высоту элемента */
-  object-fit: cover; /* Масштабируем изображение с обрезкой */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9; /* Слегка уменьшим прозрачность */
+  transition: opacity 0.3s ease;
 }
 
+.gallery-item:hover img {
+  opacity: 1; /* Вернем прозрачность при наведении */
+}
 
 
 /*ccылки в header*/
@@ -596,13 +617,13 @@ svg text {
 }
 
 /*слайдер2*/
-.like{
+/* .like{
   height: 650px;
 }
 .description-container {
   padding: 20px;
   text-align: center;
-  /* Выравниваем текст по центру */
+ 
 }
 
 .description-container h2 {
@@ -611,15 +632,15 @@ svg text {
 
 .description-container ul {
   list-style: none;
-  /* Убираем маркеры списка */
+  
   padding: 0;
-  /* Убираем отступы списка */
+
 }
 
 .description-container li {
   margin-bottom: 5px;
-  /* Добавляем отступы между элементами списка */
-}
+  
+} */
 
 
 /*футер*/
@@ -738,7 +759,7 @@ a {
   transition: all ease 0.3s;
 }
 
-/** * Owl Carousel v2.3.4 * Copyright 2013-2018 David Deutsch * Licensed under: SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE */
+/*Карусель*/
 .owl-carousel,
 .owl-carousel .owl-item {
   -webkit-tap-highlight-color: transparent;
@@ -951,4 +972,43 @@ a {
   z-index: 1;
   height: 100%;
   width: 100%;
+}
+
+
+
+/*для СЛАЙДЕРА*/
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.5s ease forwards;
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease forwards;
+}
+
+.slide-out {
+  animation: slideOut 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOut {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(20px); opacity: 0; }
 }
