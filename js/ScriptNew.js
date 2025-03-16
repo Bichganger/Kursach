@@ -260,3 +260,68 @@ document.addEventListener('DOMContentLoaded', function() {
 
     animate();
 });
+
+// Видеообзор
+document.addEventListener('DOMContentLoaded', function() {
+    const showVideoButton = document.getElementById('showVideo');
+    const videoFrame = document.getElementById('videoFrame');
+    const videoCover = document.getElementById('videoCover');
+    const videoWrapper = document.querySelector('.video-wrapper');
+    const videoUrl = 'https://www.youtube.com/watch?v=https://www.youtube.com/watch?v=TP5oj8tnaXA'; // Замените на полную ссылку на видео
+
+    function getYouTubeId(url) {
+        const regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+        const match = url.match(regExp);
+
+        if (match && match[2].length == 11) {
+            return match[2];
+        } else {
+            return null;
+        }
+    }
+
+    // Загрузка видео при клике на обложку
+    videoCover.addEventListener('click', function() {
+        const videoId = getYouTubeId(videoUrl);
+
+        if (videoId) {
+            videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            videoWrapper.classList.add('playing'); // Добавляем класс для отображения видео
+        } else {
+            alert('Не удалось извлечь ID видео из ссылки.');
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const videoSection = document.querySelector('.video-section');
+    const title = document.querySelector('.interactive-section h2');
+    const paragraph = document.querySelector('.interactive-section p');
+  
+    function isElementInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+  
+    function checkVideoSectionVisibility() {
+      if (isElementInViewport(videoSection)) {
+        // Добавляем класс "animate" для запуска анимации
+        title.classList.add('animate');
+        paragraph.classList.add('animate');
+  
+        // Отключаем слушатель, чтобы анимация не запускалась повторно
+        window.removeEventListener('scroll', checkVideoSectionVisibility);
+      }
+    }
+  
+    // Проверяем видимость блока при загрузке страницы
+    checkVideoSectionVisibility();
+  
+    // Проверяем видимость блока при прокрутке страницы
+    window.addEventListener('scroll', checkVideoSectionVisibility);
+  });

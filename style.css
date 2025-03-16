@@ -1012,3 +1012,139 @@ a {
   from { transform: translateX(0); opacity: 1; }
   to { transform: translateX(20px); opacity: 0; }
 }
+
+/*Видеообзор*/
+.video-section {
+  background-color: #222; /* Темный фон */
+  padding: 50px 0;
+}
+
+.interactive-section {
+  padding: 30px;
+}
+
+.interactive-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #fff; /* Белый цвет заголовка */
+}
+
+.interactive-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ccc; /* Светло-серый цвет текста */
+}
+
+.interactive-section ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+
+.interactive-section ul li {
+  padding: 8px 0;
+  border-bottom: 1px solid #444; /* Темная граница */
+  color: #bbb; /* Светло-серый цвет пунктов списка */
+}
+
+.m5-btn { /* Стиль кнопки (под ваш лендинг) */
+  background-color: #ff0000; /* Зеленый цвет кнопки */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.m5-btn:hover {
+  background-color: #cd0000; /* Более темный зеленый при наведении */
+}
+
+.video-container {
+  padding: 30px;
+}
+
+.video-wrapper {
+  border: 5px solid #ff0000; /* Зеленая граница видео */
+  border-radius: 10px;
+  overflow: hidden; /* Обрезаем видео, если оно выходит за рамки */
+  position: relative;
+  padding-bottom: 56.25%; /* Соотношение сторон 16:9 (для адаптивности) */
+  height: 0;
+  width: 100%;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)); /* Градиент */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  z-index: 2; /* Поверх iframe */
+}
+
+.video-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease; /* Анимация масштабирования */
+  display: block;
+}
+
+.video-cover:hover img {
+  transform: scale(1.1); /* Масштабирование при наведении */
+}
+
+.play-button {
+  width: 80px;
+  height: 80px;
+  background: url('img/play_button.png') center/contain no-repeat; /* Изображение кнопки воспроизведения */
+  opacity: 0.8; /* Полупрозрачность кнопки */
+  transition: opacity 0.3s ease; /* Плавное появление/исчезновение */
+}
+
+.video-cover:hover .play-button {
+  opacity: 1; /* Кнопка становится более видимой при наведении */
+}
+
+.video-wrapper iframe {
+  display: none; /* Скрываем iframe изначально */
+}
+
+.video-wrapper.playing .video-cover {
+  display: none; /* Скрываем обложку, когда видео запущено */
+}
+
+.video-wrapper.playing iframe {
+  display: block; /* Отображаем iframe, когда видео запущено */
+}
+/*Анимации текста в Видеообзоре*/
+.interactive-section h2,
+.interactive-section p {
+  opacity: 0; /* Изначально делаем текст невидимым */
+  transform: translateY(20px) scale(0.9); /* Смещаем вниз и немного уменьшаем */
+  transition: opacity 0.8s ease, transform 0.8s ease; /* Добавляем плавный переход */
+}
+
+/* Добавляем класс для активной анимации */
+.interactive-section h2.animate,
+.interactive-section p.animate {
+  opacity: 1; /* Делаем текст видимым */
+  transform: translateY(0) scale(1); /* Возвращаем в исходное положение и размер */
+}
