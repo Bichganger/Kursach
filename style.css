@@ -132,6 +132,9 @@ img {
 
 }
 
+
+
+
 .m5-card {
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -461,6 +464,86 @@ margin-bottom: 20px;
   display: block;
   /* Показываем изображение */
 }
+
+.assemble-section {
+  background-color: #222; /* Темный фон */
+  color: #fff; /* Светлый текст */
+  padding: 50px 0;
+}
+
+/* Стили для контейнера деталей и зоны перетаскивания */
+#partsAreaContainer,
+#dropZoneContainer {
+  background-color: #333; /* Более темный фон для контейнеров */
+  border: 2px dashed #666; /* Темно-серая пунктирная граница */
+  color: #fff; /* Светлый текст */
+  min-height: 200px;
+}
+
+/* Стили для анимированной стрелки */
+.arrow-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  position: relative;
+  margin-top: 50px;
+}
+
+.arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 25px 0 25px 40px;
+  border-color: transparent transparent transparent #f00; /* Красная стрелка (или другой цвет) */
+  animation: arrowAnimation 2s linear infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes arrowAnimation {
+  0% {
+      transform: translateX(-10px) translate(-50%, -50%);
+      opacity: 0;
+  }
+  50% {
+      transform: translateX(10px) translate(-50%, -50%);
+      opacity: 1;
+  }
+  100% {
+      transform: translateX(30px) translate(-50%, -50%);
+      opacity: 0;
+  }
+}
+.success-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(60, 179, 113, 0.9); /* Цвет фона */
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.2em;
+  z-index: 10;
+  opacity: 0; /* Скрываем сообщение по умолчанию */
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.success-message.show {
+  opacity: 1; /* Показываем сообщение */
+}
+
+#dropZone {
+  background-color: #444; /* Еще темнее для зоны перетаскивания */
+  border: 2px dashed #777; /* Более светлая граница для зоны перетаскивания */
+  /* Другие стили зоны перетаскивания */
+}
+
+
 
 
 

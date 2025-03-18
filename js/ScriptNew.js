@@ -115,7 +115,74 @@ document.addEventListener('DOMContentLoaded', function() {
     dropZone.addEventListener('dragover', dragOver);
     dropZone.addEventListener('drop', drop);
 });
+const partsArea = document.getElementById('partsArea');
+const arrowContainer = document.querySelector('.arrow-container');
+const dropZone = document.getElementById('dropZone');
+const successMessage = document.querySelector('.success-message');
+const finalImageContainer = document.getElementById('finalImageContainer');
+const partsAreaContainer = document.getElementById('partsAreaContainer');
+const dropZoneContainer = document.getElementById('dropZoneContainer');
 
+// Функция для проверки наличия деталей
+function hasDraggableParts() {
+    return partsArea.querySelectorAll('.draggable').length > 0;
+}
+
+// Изначально проверяем наличие деталей
+if (!hasDraggableParts()) {
+    arrowContainer.style.display = 'none';
+}
+
+// Обработчик события dragstart для деталей
+partsArea.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', e.target.id);
+
+    if (hasDraggableParts()) {
+        arrowContainer.style.display = 'flex';
+    }
+});
+
+dropZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+});
+
+dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    successMessage.classList.add('show');
+
+    setTimeout(() => {
+        successMessage.classList.remove('show');
+    }, 2000);
+
+    const id = e.dataTransfer.getData('text/plain');
+    const draggedElement = document.getElementById(id);
+
+    if (draggedElement) {
+        draggedElement.remove();
+
+        if (!hasDraggableParts()) {
+            //arrowContainer.style.display = 'none'; //  Закомментируйте эту строку
+             // Получаем родителя элемента arrowContainer
+            const arrowContainerParent = arrowContainer.closest('.col-md-2');
+
+            // Скрываем родителя
+            if (arrowContainerParent) {
+                arrowContainerParent.style.display = 'none !important';
+            }
+            finalImageContainer.style.display = 'flex';
+            partsAreaContainer.style.display = 'none';
+            dropZoneContainer.style.display = 'none';
+        }
+    }
+});
+
+//Генерируем id для картинок
+const draggables = document.querySelectorAll('.draggable');
+
+draggables.forEach((draggable, index) => {
+    draggable.id = `draggable-${index}`;
+    draggable.setAttribute('draggable', true); // Убедитесь, что атрибут draggable установлен
+});
 //галерея
 document.addEventListener('DOMContentLoaded', function() {
     const galleryTrack = document.querySelector('.gallery-track');
