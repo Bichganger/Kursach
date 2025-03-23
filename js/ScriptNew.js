@@ -1,188 +1,79 @@
 'Use strict';
-// $(document).ready(function() {
-//     // Описания для каждого слайда
-//     const descriptions = [
-//         {
-//             title: "Динамика и мощь M5 F90",
-//             text: "BMW M5 F90 - это воплощение динамики и мощи. Разгон до 100 км/ч за считанные секунды, бескомпромиссная управляемость и невероятный звук выхлопа - все это делает M5 F90 настоящим королем дорог."
-//         },
-//         {
-//             title: "Инновации и технологии M5 F90",
-//             text: "M5 F90 оснащен самыми передовыми технологиями, включая интеллектуальную систему полного привода M xDrive, адаптивную подвеску и множество других инновационных решений, которые обеспечивают непревзойденный уровень комфорта и безопасности."
-//         },
-//         {
-//             title: "Дизайн и эксклюзивность M5 F90",
-//             text: "M5 F90 - это не только мощный и технологичный автомобиль, но и настоящий произведение искусства. Агрессивный и элегантный дизайн, роскошный интерьер и внимание к деталям делают M5 F90 уникальным и эксклюзивным автомобилем."
-//         }
-//     ];
-
-//     // Функция для обновления описания
-//     function updateDescription(index) {
-//         $("#m5Description h3").text(descriptions[index].title);
-//         $("#m5Description p").text(descriptions[index].text);
-//     }
-
-//     // Обработчик события slide.bs.carousel
-//     $('#m5Slider').on('slide.bs.carousel', function (e) {
-//         let index = $(e.relatedTarget).index();
-//         updateDescription(index);
-//     });
-
-//     // Инициализация описания для первого слайда
-//     updateDescription(0);
-// });
-/*слайдер*/
-
-
-
-
-
-/*document.addEventListener('DOMContentLoaded', function() {
-    const colorSelect = document.getElementById('colorSelect');
-    const wheelSelect = document.getElementById('wheelSelect');
-    const carImage = document.getElementById('carImage');
-    const selectedColor = document.getElementById('selectedColor');
-    const selectedWheels = document.getElementById('selectedWheels');
-
-    colorSelect.addEventListener('change', function() {
-        const color = this.value;
-        const imagePath = `img/m5_${color}.png`;
-        carImage.src = imagePath;
-        selectedColor.textContent = this.options[this.selectedIndex].text;
-    });
-
-    wheelSelect.addEventListener('change', function() {
-        selectedWheels.textContent = this.options[this.selectedIndex].text;
-    });
-});*/
-
 //наработки на главный экран
 document.addEventListener('DOMContentLoaded', function() {
+    const parts = document.querySelectorAll('.draggable');
+    const dropZone = document.getElementById('dropZone');
+    const finalImageContainer = document.getElementById('finalImageContainer');
+    const successMessage = document.querySelector('.success-message');
+    const applyMessage = document.getElementById('applyMessage');
     const partsAreaContainer = document.getElementById('partsAreaContainer');
     const dropZoneContainer = document.getElementById('dropZoneContainer');
-    const finalImageContainer = document.getElementById('finalImageContainer');
-    const draggableElements = document.querySelectorAll('.draggable');
-    let partsCount = 0;
-    const totalParts = draggableElements.length;
 
-    // Функция для обработки начала перетаскивания
-    function dragStart(event) {
-        event.dataTransfer.setData('text/plain', event.target.id);
-        event.target.classList.add('dragging');
-    }
+    let draggedParts = 0;
 
-    // Функция для обработки окончания перетаскивания
-    function dragEnd(event) {
-        event.target.classList.remove('dragging');
-    }
-
-    // Обработчик перетаскивания над зоной
-    function dragOver(event) {
-        event.preventDefault();
-    }
-
-    // Обработчик бросания элемента в зону
-    function drop(event) {
-        event.preventDefault();
-        const id = event.dataTransfer.getData('text/plain');
-        const draggedElement = document.getElementById(id);
-
-        if (draggedElement && !draggedElement.classList.contains('hidden')) {
-            draggedElement.classList.add('hidden');
-
-            partsCount++;
-            if (partsCount === totalParts) {
-                // Скрываем контейнеры с деталями и зоной перетаскивания
-                partsAreaContainer.style.display = 'none';
-                dropZoneContainer.style.display = 'none';
-
-                // Показываем контейнер с финальным изображением
-                finalImageContainer.style.display = 'block'; // Или 'block'
-            }
-        }
-    }
-
-    // Назначаем обработчики для перетаскиваемых элементов
-    draggableElements.forEach((element, index) => {
-        element.id = 'part-' + index;
-        element.setAttribute('draggable', true);
-
-        element.addEventListener('dragstart', dragStart);
-        element.addEventListener('dragend', dragEnd);
+    parts.forEach(part => {
+        part.addEventListener('dragstart', function(e) {
+            e.dataTransfer.setData('text/plain', e.target.dataset.part);
+        });
     });
 
-    // Назначаем обработчики для зоны бросания
-    dropZone.addEventListener('dragover', dragOver);
-    dropZone.addEventListener('drop', drop);
-});
-const partsArea = document.getElementById('partsArea');
-const arrowContainer = document.querySelector('.arrow-container');
-const dropZone = document.getElementById('dropZone');
-const successMessage = document.querySelector('.success-message');
-const finalImageContainer = document.getElementById('finalImageContainer');
-const partsAreaContainer = document.getElementById('partsAreaContainer');
-const dropZoneContainer = document.getElementById('dropZoneContainer');
+    dropZone.addEventListener('dragover', function(e) {
+        e.preventDefault();
+    });
 
-// Функция для проверки наличия деталей
-function hasDraggableParts() {
-    return partsArea.querySelectorAll('.draggable').length > 0;
-}
+    dropZone.addEventListener('drop', function(e) {
+        e.preventDefault();
+        const partType = e.dataTransfer.getData('text/plain');
+        const draggedElement = document.querySelector(`[data-part="${partType}"]:not(.dragged)`);
 
-// Изначально проверяем наличие деталей
-if (!hasDraggableParts()) {
-    arrowContainer.style.display = 'none';
-}
+        if (draggedElement) {
+            // Удаляем деталь из левого блока
+            draggedElement.remove();
+            draggedParts++;
 
-// Обработчик события dragstart для деталей
-partsArea.addEventListener('dragstart', (e) => {
-    e.dataTransfer.setData('text/plain', e.target.id);
+            // Показываем сообщение об успешном добавлении
+            successMessage.style.display = 'block';
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+                applyMessage.style.display = 'block';
+                setTimeout(() => {
+                    applyMessage.style.display = 'none';
 
-    if (hasDraggableParts()) {
-        arrowContainer.style.display = 'flex';
-    }
-});
+                    // Если все детали перетащены
+                    if (draggedParts === parts.length) {
+                        // Скрываем блоки с деталями и зоной для перетаскивания
+                        partsAreaContainer.style.display = 'none';
+                        dropZoneContainer.style.display = 'none';
 
-dropZone.addEventListener('dragover', (e) => {
-    e.preventDefault();
-});
-
-dropZone.addEventListener('drop', (e) => {
-    e.preventDefault();
-    successMessage.classList.add('show');
-
-    setTimeout(() => {
-        successMessage.classList.remove('show');
-    }, 2000);
-
-    const id = e.dataTransfer.getData('text/plain');
-    const draggedElement = document.getElementById(id);
-
-    if (draggedElement) {
-        draggedElement.remove();
-
-        if (!hasDraggableParts()) {
-            //arrowContainer.style.display = 'none'; //  Закомментируйте эту строку
-             // Получаем родителя элемента arrowContainer
-            const arrowContainerParent = arrowContainer.closest('.col-md-2');
-
-            // Скрываем родителя
-            if (arrowContainerParent) {
-                arrowContainerParent.style.display = 'none !important';
-            }
-            finalImageContainer.style.display = 'flex';
-            partsAreaContainer.style.display = 'none';
-            dropZoneContainer.style.display = 'none';
+                        // Показываем финальное изображение
+                        finalImageContainer.style.display = 'block';
+                    }
+                }, 1000);
+            }, 1000);
         }
-    }
+    });
 });
 
-//Генерируем id для картинок
-const draggables = document.querySelectorAll('.draggable');
+//Карточки
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+        card.style.setProperty('--rotate-x', `${rotateX}deg`);
+        card.style.setProperty('--rotate-y', `${rotateY}deg`);
+    });
 
-draggables.forEach((draggable, index) => {
-    draggable.id = `draggable-${index}`;
-    draggable.setAttribute('draggable', true); // Убедитесь, что атрибут draggable установлен
+    card.addEventListener('mouseleave', () => {
+        card.style.setProperty('--rotate-x', '0deg');
+        card.style.setProperty('--rotate-y', '0deg');
+    });
 });
+
 //галерея
 document.addEventListener('DOMContentLoaded', function() {
     const galleryTrack = document.querySelector('.gallery-track');
@@ -211,100 +102,54 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /*Слайдер2*/
+const descriptions = [
+    {
+        title: "Роскошный интерьер",
+        text: "Испытайте непревзойденный комфорт благодаря высококачественным материалам и передовым технологиям.",
+        list: ["Кожаные сиденья", "Панорамная крыша", "Цифровая приборная панель"]
+    },
+    {
+        title: "Современный дизайн",
+        text: "Интерьер, сочетающий в себе элегантность и инновации.",
+        list: ["Светодиодная подсветка", "Умный климат-контроль", "Качественная отделка"]
+    },
+    {
+        title: "Динамичный экстерьер",
+        text: "Спортивный и агрессивный дизайн, который привлекает внимание.",
+        list: ["Аэродинамические линии", "Светодиодные фары", "Спортивные диски"]
+    },
+    {
+        title: "Мощь и стиль",
+        text: "Экстерьер, который подчеркивает характер и производительность.",
+        list: ["Широкие колесные арки", "Двойная выхлопная система", "Спойлер"]
+    }
+];
+
+function updateDescription(index) {
+    const description = descriptions[index];
+    document.getElementById('description-title').textContent = description.title;
+    document.getElementById('description-text').textContent = description.text;
+
+    const list = document.getElementById('description-list');
+    list.innerHTML = '';
+    description.list.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        list.appendChild(li);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const carousel = document.getElementById('carouselExampleSlidesOnly');
-    const carouselInner = carousel.querySelector('.carousel-inner');
-    const carouselItems = carouselInner.querySelectorAll('.carousel-item');
-    const descriptionTitle = document.getElementById('description-title');
-    const descriptionText = document.getElementById('description-text');
-    const descriptionList = document.getElementById('description-list');
-    const sliderContainer = document.querySelector('.slider-container');
-    const descriptionContainer = document.querySelector('.description-container');
+    carousel.addEventListener('slid.bs.carousel', function(event) {
+        const activeIndex = event.to;
+        updateDescription(activeIndex);
+    });
 
-    // Описания для слайдов
-    const descriptions = [
-        {
-            title: 'Интерьер BMW M5',
-            text: 'Современный и роскошный интерьер.',
-            list: ['Премиальная кожа', 'Спортивные сиденья', 'Цифровая приборная панель']
-        },
-        {
-            title: 'Детали интерьера',
-            text: 'Изысканные детали и отделка.',
-            list: ['Высококачественные материалы', 'Эргономичный дизайн']
-        },
-        {
-            title: 'Экстерьер BMW M5',
-            text: 'Агрессивный и динамичный внешний вид.',
-            list: ['Спортивный обвес', 'Легкосплавные диски', 'Фирменная решетка радиатора']
-        },
-        {
-            title: 'Дизайн экстерьера',
-            text: 'Элегантность и мощь в каждой линии.',
-            list: ['Выразительная оптика', 'Аэродинамические элементы']
-        }
-    ];
-
-    let currentIndex = 0; // Текущий индекс слайда
-    const slideDuration = 5000; // Уменьшаем до 3 секунд
-
-    // Функция для обновления описания с анимацией
-    function updateDescription(index) {
-        // Анимируем исчезновение старого описания
-        descriptionContainer.classList.add('fade-out');
-
-        // После исчезновения меняем описание и анимируем появление
-        setTimeout(() => {
-            const description = descriptions[index];
-            descriptionTitle.textContent = description.title;
-            descriptionText.textContent = description.text;
-            descriptionList.innerHTML = ''; // Очищаем список
-
-            description.list.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                descriptionList.appendChild(li);
-            });
-
-            descriptionContainer.classList.remove('fade-out');
-            descriptionContainer.classList.add('fade-in');
-        }, 500); // Пауза перед сменой описания
-    }
-
-    // Функция для переключения слайда с анимацией
-    function showSlide(index) {
-        // Анимируем исчезновение старого слайда
-        sliderContainer.classList.add('slide-out');
-
-        // После исчезновения меняем слайд и анимируем появление
-        setTimeout(() => {
-            // Сначала убираем класс active у всех слайдов
-            carouselItems.forEach(item => item.classList.remove('active'));
-
-            // Добавляем класс active только к текущему слайду
-            carouselItems[index].classList.add('active');
-
-            sliderContainer.classList.remove('slide-out');
-            sliderContainer.classList.add('slide-in');
-
-            // Обновляем описание
-            updateDescription(index);
-
-            currentIndex = index; // Обновляем текущий индекс
-
-        }, 500); // Пауза перед сменой слайда
-    }
-
-    // Запускаем слайдер вручную
-    function startCarousel() {
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % carouselItems.length;
-            showSlide(currentIndex);
-        }, slideDuration);
-    }
-
-    startCarousel(); // Запускаем слайдер
+    updateDescription(0);
 });
+
+
 
 //анимация галлереи
 document.addEventListener('DOMContentLoaded', function() {

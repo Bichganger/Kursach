@@ -7,343 +7,145 @@ body {
   color: #333;
 }
 
-/* Header Styles */
-.car-header {
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Carousel Styles */
-#headerCarousel {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  /* Под оверлеем и контентом */
-}
-
-.carousel-inner {
-  width: 100%;
-  height: 100%;
-}
-
-.carousel-item {
-  height: 100vh;
-  /* Убедитесь, что каждый слайд занимает всю высоту */
-}
-
-/*  Класс object-fit-cover, чтобы не дублировать его в каждом img*/
-.object-fit-cover {
-  object-fit: cover;
-  /* Растягивает или сжимает изображение, сохраняя пропорции и заполняя контейнер */
-  width: 100%;
-  height: 100%;
-}
-
-.header-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-  /* Над слайдером, под контентом */
-}
-
-.header-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-  z-index: 2;
-  /* Над слайдером и оверлеем */
-  width: 80%;
-}
-
-.logo {
-  width: 150px;
-  margin-bottom: 20px;
-}
-
-.car-header h1 {
-  font-size: 3em;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-}
-
-.car-header p {
-  font-size: 1.2em;
-  line-height: 1.6;
-  margin-bottom: 30px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-}
-
-.cta-button {
-  display: inline-block;
-  padding: 15px 30px;
-  background-color: #e43a19;
-  color: white;
-  text-decoration: none;
-  font-size: 1.2em;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
-  background-color: #b82e12;
-}
-
 /* Main Content Styles (example) */
 main {
   padding: 20px;
-}
-
-#explore {
-  text-align: center;
 }
 
 img {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-.fotki {
-  width: 1920px;
-  height: 1080px;
-}
-
-.block {
-  background-image: url(img/главЭкран2.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 1080px;
-  /* width: 1920px; */
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-}
-
-
-
-
-.m5-card {
-  border: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  border-radius: 10px;
-  overflow: hidden;
-  /* Обрезаем выступающие элементы, чтобы border-radius работал */
-}
-
-.m5-card:hover {
-  transform: translateY(-5px);
-  /* Небольшой эффект подъема при наведении */
-}
-
-.m5-card .card-img-top {
-  height: 200px;
-  /* Фиксированная высота для изображений */
-  object-fit: cover;
-  /* Масштабирование с обрезкой */
-}
-
-/* Черный цвет кнопок и текста для стилистики BMW */
-.carousel-control-prev,
-.carousel-control-next {
-  color: black;
-}
-
-.carousel-indicators li {
-  background-color: black;
-}
-
-/* Общее выравнивание */
-.card-body {
-  text-align: center;
-  /* Выравнивание текста в карточке по центру */
-}
-
-.image {
-  width: 1600px;
-  height: 900px;
-  margin: 0 auto;
-}
-
-.carousel-caption {
-  width: 1600px;
-  height: 100px;
-  border: 3px solid white;
-  margin: 48px -61px;
-  background-color: #333;
-}
-
-.kart {
-  margin: 50px;
-  padding: 15px;
+/*Стили карточек*/
+.kartochki {
+  gap: 5rem;
 }
 
 .card {
-  position: relative;
-  /*  Необходимо для позиционирования псевдоэлемента */
+  background: #fff;
+  transition: background 0.5s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  transform-style: preserve-3d;
+  border: none;
   overflow: hidden;
-  /*  Скрываем градиент, выходящий за границы */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  perspective: 1000px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px) rotateX(var(--rotate-x)) rotateY(var(--rotate-y)) scale(1.05);
 }
 
-.card::before {
-  content: "";
+.card-img-top {
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.1) translateY(-10px);
+}
+
+.card-body h3,
+.card-body .card-text {
+  position: relative;
+  display: inline-block;
+}
+
+.card-body h3::after,
+.card-body .card-text::after {
+  content: '';
   position: absolute;
-  top: 0;
   left: 0;
+  bottom: -2px;
   width: 100%;
-  height: 5px;
-  /* Толщина градиента */
-  background: linear-gradient(to right, #000000, #ff0000);
-  /* Градиент */
+  height: 2px;
+  background: linear-gradient(90deg, #000000, #ff0000);
   transform: scaleX(0);
-  /* Скрываем градиент по горизонтали */
   transform-origin: left;
-  /* Точка начала масштабирования */
   transition: transform 0.3s ease;
-  /* Плавное появление градиента */
-  z-index: 1;
 }
 
-.card:hover::before {
+.card:hover .card-body h3::after,
+.card:hover .card-body .card-text::after {
   transform: scaleX(1);
-  /* Показываем градиент при наведении */
 }
-
-.card {
-  transition: transform 0.8s ease;
-  /* Плавный переход */
-}
-
-
-.card-body>h3 {
-  font-weight: bold;
-}
-
-h1 {
-  color: #ffffff;
-}
-
-h2,
-h3,
-p {
-  color: #333;
-}
-
-
-/*Галерея*/
-
 
 
 
 /* слайдер */
+/* Основные стили для секции */
 .m5-section {
-  background-color: #222;
-  /* Более светлый фон для секции */
-  padding: 50px 0;
-  height: 750px;
+  background: #1a1a1a; /* Темный фон для всей секции */
+  padding: 40px 0;
+  color: #fff; /* Белый текст */
 }
 
-.slider-container,
-.description-container {
-  padding: 20px;
+/* Стили для слайдера (левый блок) */
+.slider-container {
+  border-radius: 15px;
+  overflow: hidden;
+  padding-right: 15px; /* Отступ между слайдером и описанием */
 }
 
-.m5-slider img {
+.carousel-item img {
+  border-radius: 15px;
   width: 100%;
   height: auto;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-.m5-slider {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%;
-  /* Соотношение сторон 16:9 для адаптивности */
-  overflow: hidden;
+/* Стили для блока с описанием (правый блок) */
+.description-container {
+  padding: 20px;
+  background: #2d2d2d; /* Темный фон для блока с описанием */
+  border-radius: 15px;
+  height: 100%; /* Занимает всю высоту */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Выравниваем текст по центру вертикально */
 }
 
-.m5-slider div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.m5-slider div img {
-  object-fit: cover;
-  /* Заполнение с обрезкой */
-}
-
-.description-container h2 {
-  color: #fff;
+#description-title {
+  font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  color: #fff; /* Белый текст */
 }
 
-.description-container p {
-  color: #ddd;
-  line-height: 1.6;
+#description-text {
+  font-size: 1.1rem;
+  color: #ccc; /* Светло-серый текст */
+  margin-bottom: 1.5rem;
 }
 
-.description-container ul {
-  list-style: none;
+#description-list {
+  list-style-type: none;
   padding: 0;
 }
 
-.description-container li {
-  margin-bottom: 10px;
-}
-
-li {
-  color: white;
-}
-
-.m5-btn {
-  background-color: #007bff;
-  color: #fff;
-  padding: 12px 24px;
+#description-list li {
+  background: #444; /* Темный фон для элементов списка */
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
-  text-decoration: none;
-  display: inline-block;
-  margin-top: 20px;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  color: #fff; /* Белый текст */
 }
 
-.m5-btn:hover {
-  background-color: #0056b3;
-  color: #fff;
-}
-.kartochki{
-  height: 600px;
-margin-top: 20px;
-margin-bottom: 20px;
+/* Стили для кнопок навигации слайдера */
+.carousel-control-prev,
+.carousel-control-next {
+  background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1); /* Инвертируем цвет иконок (чтобы были белыми) */
+}
 
 /*Наработки на главный экран*/
 #kvadrat {
@@ -365,38 +167,13 @@ margin-bottom: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.draggable1 {
-  background-color: red;
-}
-
-.draggable2 {
-  background-color: green;
-}
-
-.draggable3 {
-  background-color: blue;
-}
-
-.draggable4 {
-  background-color: yellow;
-}
-
-.draggable5 {
-  background-color: purple;
-}
-
-.draggable6 {
-  background-color: orange;
-}
-
-
 .assemble-section {
   background-color: #f8f9fa;
   padding: 50px 0;
 }
 
 #partsArea {
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   padding: 20px;
   min-height: 300px;
 }
@@ -404,7 +181,7 @@ margin-bottom: 20px;
 #dropZone {
   width: 100%;
   height: 300px;
-  border: 2px dashed #aaa;
+  /* border: 2px dashed #aaa; */
   background-color: #eee;
   display: flex;
   justify-content: center;
@@ -475,48 +252,11 @@ margin-bottom: 20px;
 #partsAreaContainer,
 #dropZoneContainer {
   background-color: #333; /* Более темный фон для контейнеров */
-  border: 2px dashed #666; /* Темно-серая пунктирная граница */
   color: #fff; /* Светлый текст */
   min-height: 200px;
 }
 
-/* Стили для анимированной стрелки */
-.arrow-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-  position: relative;
-  margin-top: 50px;
-}
-
-.arrow {
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 25px 0 25px 40px;
-  border-color: transparent transparent transparent #f00; /* Красная стрелка (или другой цвет) */
-  animation: arrowAnimation 2s linear infinite;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@keyframes arrowAnimation {
-  0% {
-      transform: translateX(-10px) translate(-50%, -50%);
-      opacity: 0;
-  }
-  50% {
-      transform: translateX(10px) translate(-50%, -50%);
-      opacity: 1;
-  }
-  100% {
-      transform: translateX(30px) translate(-50%, -50%);
-      opacity: 0;
-  }
-}
+/* Стили для сообщения*/
 .success-message {
   position: absolute;
   top: 50%;
@@ -699,33 +439,6 @@ svg text {
   /* Время эффекта */
 }
 
-/*слайдер2*/
-/* .like{
-  height: 650px;
-}
-.description-container {
-  padding: 20px;
-  text-align: center;
- 
-}
-
-.description-container h2 {
-  margin-bottom: 15px;
-}
-
-.description-container ul {
-  list-style: none;
-  
-  padding: 0;
-
-}
-
-.description-container li {
-  margin-bottom: 5px;
-  
-} */
-
-
 /*футер*/
 :root {
   --text-font: "Hind", sans-serif;
@@ -842,220 +555,7 @@ a {
   transition: all ease 0.3s;
 }
 
-/*Карусель*/
-.owl-carousel,
-.owl-carousel .owl-item {
-  -webkit-tap-highlight-color: transparent;
-  position: relative;
-}
 
-.owl-carousel {
-  display: none;
-  width: 100%;
-  z-index: 1;
-}
-
-.owl-carousel .owl-stage {
-  position: relative;
-  -ms-touch-action: pan-Y;
-  touch-action: manipulation;
-  /* -moz-backface-visibility: hidden; */
-}
-
-.owl-carousel .owl-stage:after {
-  content: ".";
-  display: block;
-  clear: both;
-  visibility: hidden;
-  line-height: 0;
-  height: 0;
-}
-
-.owl-carousel .owl-stage-outer {
-  position: relative;
-  overflow: hidden;
-  /*-webkit-transform: translate3d(0, 0, 0);*/
-}
-
-/* .owl-carousel .owl-item,
-.owl-carousel .owl-wrapper {
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-} */
-
-.owl-carousel .owl-item {
-  min-height: 1px;
-  float: left;
-  /* -webkit-backface-visibility: hidden; */
-  -webkit-touch-callout: none;
-}
-
-.owl-carousel .owl-item img {
-  display: block;
-  width: 100%;
-}
-
-.owl-carousel .owl-dots.disabled,
-.owl-carousel .owl-nav.disabled {
-  display: none;
-}
-
-.no-js .owl-carousel,
-.owl-carousel.owl-loaded {
-  display: block;
-}
-
-.owl-carousel .owl-dot,
-.owl-carousel .owl-nav .owl-next,
-.owl-carousel .owl-nav .owl-prev {
-  cursor: pointer;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.owl-carousel .owl-nav button.owl-next,
-.owl-carousel .owl-nav button.owl-prev,
-.owl-carousel button.owl-dot {
-  background: 0 0;
-  color: inherit;
-  border: none;
-  padding: 0 !important;
-  font: inherit;
-}
-
-.owl-carousel.owl-loading {
-  opacity: 0;
-  display: block;
-}
-
-.owl-carousel.owl-hidden {
-  opacity: 0;
-}
-
-.owl-carousel.owl-refresh .owl-item {
-  visibility: hidden;
-}
-
-.owl-carousel.owl-drag .owl-item {
-  -ms-touch-action: pan-y;
-  touch-action: pan-y;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.owl-carousel.owl-grab {
-  cursor: move;
-  cursor: grab;
-}
-
-.owl-carousel.owl-rtl {
-  direction: rtl;
-}
-
-.owl-carousel.owl-rtl .owl-item {
-  float: right;
-}
-
-.owl-carousel .animated {
-  animation-duration: 1s;
-  animation-fill-mode: both;
-}
-
-.owl-carousel .owl-animated-in {
-  z-index: 0;
-}
-
-.owl-carousel .owl-animated-out {
-  z-index: 1;
-}
-
-.owl-carousel .fadeOut {
-  animation-name: fadeOut;
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-.owl-height {
-  transition: height 0.5s ease-in-out;
-}
-
-.owl-carousel .owl-item .owl-lazy {
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.owl-carousel .owl-item .owl-lazy:not([src]),
-.owl-carousel .owl-item .owl-lazy[src^=""] {
-  max-height: 0;
-}
-
-.owl-carousel .owl-item img.owl-lazy {
-  transform-style: preserve-3d;
-}
-
-.owl-carousel .owl-video-wrapper {
-  position: relative;
-  height: 100%;
-  background: #000;
-}
-
-.owl-carousel .owl-video-play-icon {
-  position: absolute;
-  height: 80px;
-  width: 80px;
-  left: 50%;
-  top: 50%;
-  margin-left: -40px;
-  margin-top: -40px;
-  background: url(owl.video.play.png) no-repeat;
-  cursor: pointer;
-  z-index: 1;
-  /* -webkit-backface-visibility: hidden; */
-  transition: transform 0.1s ease;
-}
-
-.owl-carousel .owl-video-play-icon:hover {
-  -ms-transform: scale(1.3, 1.3);
-  transform: scale(1.3, 1.3);
-}
-
-.owl-carousel .owl-video-playing .owl-video-play-icon,
-.owl-carousel .owl-video-playing .owl-video-tn {
-  display: none;
-}
-
-.owl-carousel .owl-video-tn {
-  opacity: 0;
-  height: 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  transition: opacity 0.4s ease;
-}
-
-.owl-carousel .owl-video-frame {
-  position: relative;
-  z-index: 1;
-  height: 100%;
-  width: 100%;
-}
 
 
 
