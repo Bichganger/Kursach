@@ -238,25 +238,43 @@
     </div>
 
     <!-- Видеообзор -->
-    <div class="container-fluid video-section">
-      <div class="row">
+    <div class="container-fluid video-section bmw-power-section">
+      <div class="row align-items-center">
         <div class="col-md-6 interactive-section">
-          <h2>Узнайте все о BMW M5!</h2>
-          <p>Готовы узнать больше о легендарном BMW M5? Посмотрите видеообзор и откройте для себя захватывающие детали и
-            возможности этого автомобиля.</p>
-          <ul>
-            <li>Обзор дизайна и интерьера</li>
-            <li>Тест-драйв на трассе</li>
-            <li>Технические характеристики и инновации</li>
-          </ul>
-          <button class="btn m5-btn" id="showVideo">Посмотреть видео</button>
+          <div class="specs-overlay">
+            <h2 class="bmw-title" data-text="BMW M5">BMW M5</h2>
+            <p class="bmw-subtitle">Испытайте мощь легенды</p>
+            
+            <div class="specs-grid">
+              <div class="spec-item">
+                <div class="spec-value" id="hpValue">617</div>
+                <div class="spec-label">л.с.</div>
+              </div>
+              <div class="spec-item">
+                <div class="spec-value" id="speedValue">3.4</div>
+                <div class="spec-label">сек 0-100</div>
+              </div>
+              <div class="spec-item">
+                <div class="spec-value" id="torqueValue">750</div>
+                <div class="spec-label">Нм</div>
+              </div>
+            </div>
+            
+            <button class="btn m5-btn" id="showVideo">
+              <span class="btn-text">Запустить двигатель</span>
+              <span class="btn-icon">→</span>
+            </button>
+          </div>
         </div>
-
+    
         <div class="col-md-6 video-container">
           <div class="video-wrapper">
             <div class="video-cover" id="videoCover">
-              <img src="img/Заставка4.png" alt="Обложка видео BMW M5">
-              <div class="play-button"></div>
+              <div class="bmw-3d-container">
+                <img src="img/Заставка4.png" class="bmw-image" alt="BMW M5">
+                <div class="reflection"></div>
+              </div>
+              <div class="speed-lines"></div>
             </div>
             <iframe id="videoFrame" width="100%" height="315" src="" title="YouTube video player" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -264,8 +282,11 @@
           </div>
         </div>
       </div>
+      
+      <!-- Элементы для спецэффектов -->
+      <div class="particles"></div>
+      <audio id="engineSound" src="https://assets.mixkit.co/sfx/preview/mixkit-sports-car-engine-16.mp3" preload="auto"></audio>
     </div>
-
 
 
 

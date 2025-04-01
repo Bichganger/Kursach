@@ -175,65 +175,124 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Видеообзор
 document.addEventListener('DOMContentLoaded', function() {
-    const showVideoButton = document.getElementById('showVideo');
-    const videoFrame = document.getElementById('videoFrame');
+    function getRuTubeVideoId(url) {
+      // Для ссылок вида: https://rutube.ru/video/6b9a3b7f5e6d4c3b2a1f0e5d4c3b2a1/
+      const regExp1 = /rutube\.ru\/video\/([a-f0-9]+)\/?/i;
+      // Для ссылок вида: https://rutube.ru/play/embed/12345678
+      const regExp2 = /rutube\.ru\/play\/embed\/(\d+)/i;
+      
+      const match1 = url.match(regExp1);
+      const match2 = url.match(regExp2);
+      
+      return match1 ? match1[1] : (match2 ? match2[1] : null);
+    }
+  
     const videoCover = document.getElementById('videoCover');
-    const videoWrapper = document.querySelector('.video-wrapper');
-    const videoUrl = 'https://www.youtube.com/watch?v=https://www.youtube.com/watch?v=TP5oj8tnaXA'; // Замените на полную ссылку на видео
-
-    function getYouTubeId(url) {
-        const regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-        const match = url.match(regExp);
-
-        if (match && match[2].length == 11) {
-            return match[2];
-        } else {
-            return null;
-        }
-    }
-
-    // Загрузка видео при клике на обложку
-    videoCover.addEventListener('click', function() {
-        const videoId = getYouTubeId(videoUrl);
-
-        if (videoId) {
-            videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-            videoWrapper.classList.add('playing'); // Добавляем класс для отображения видео
-        } else {
-            alert('Не удалось извлечь ID видео из ссылки.');
-        }
+    const videoFrame = document.getElementById('videoFrame');
+    const showVideoBtn = document.getElementById('showVideo');
+    const engineSound = document.getElementById('engineSound');
+    const bmwImage = document.querySelector('.bmw-image');
+    const speedLines = document.querySelector('.speed-lines');
+    
+    // Ваша ссылка на RuTube видео
+    const rutubeUrl = "https://rutube.ru/video/cb71a858ede065be101d4adff66f3491/"; 
+    
+    // Эффект при наведении на видео
+    videoCover.addEventListener('mouseenter', function() {
+      this.querySelector('.bmw-3d-container').style.transform = 'translateZ(20px)';
+      bmwImage.style.transform = 'scale(1.05)';
+      speedLines.style.opacity = '0.3';
     });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const videoSection = document.querySelector('.video-section');
-    const title = document.querySelector('.interactive-section h2');
-    const paragraph = document.querySelector('.interactive-section p');
-  
-    function isElementInViewport(el) {
-      const rect = el.getBoundingClientRect();
-      return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-      );
-    }
-  
-    function checkVideoSectionVisibility() {
-      if (isElementInViewport(videoSection)) {
-        // Добавляем класс "animate" для запуска анимации
-        title.classList.add('animate');
-        paragraph.classList.add('animate');
-  
-        // Отключаем слушатель, чтобы анимация не запускалась повторно
-        window.removeEventListener('scroll', checkVideoSectionVisibility);
+    
+    videoCover.addEventListener('mouseleave', function() {
+      this.querySelector('.bmw-3d-container').style.transform = 'translateZ(0)';
+      bmwImage.style.transform = 'scale(1)';
+      speedLines.style.opacity = '0';
+    });
+    
+    // Запуск видео с эффектом
+    showVideoBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      if (this.classList.contains('starting')) return;
+      this.classList.add('starting');
+      
+      // Извлекаем ID видео
+      const videoId = getRuTubeVideoId(rutubeUrl);
+      if (!videoId) {
+        console.error("Ошибка: неверный формат RuTube ссылки");
+        this.textContent = "Ошибка загрузки видео";
+        return;
       }
-    }
   
-    // Проверяем видимость блока при загрузке страницы
-    checkVideoSectionVisibility();
-  
-    // Проверяем видимость блока при прокрутке страницы
-    window.addEventListener('scroll', checkVideoSectionVisibility);
+      // Формируем embed-ссылку для RuTube
+      const embedUrl = `https://rutube.ru/play/embed/${videoId}?autoplay=1`;
+      
+      this.innerHTML = '<span class="btn-text">Запуск двигателя...</span>';
+      engineSound.currentTime = 0;
+      engineSound.play();
+      videoCover.style.animation = 'engineStart 1s 2';
+      
+      // Эффекты скорости
+      setTimeout(() => {
+        speedLines.style.opacity = '0.7';
+        setTimeout(() => speedLines.style.opacity = '0', 300);
+        
+        setTimeout(() => {
+          speedLines.style.opacity = '0.5';
+          setTimeout(() => speedLines.style.opacity = '0', 500);
+        }, 400);
+      }, 300);
+      
+      // Запуск видео после эффектов
+      setTimeout(() => {
+        videoCover.style.visibility = 'hidden';
+        videoFrame.src = embedUrl;
+        videoFrame.src = embedUrl;
+        videoFrame.style.position = 'absolute';
+        videoFrame.style.top = '0';
+        videoFrame.style.left = '0';
+        videoFrame.style.width = '100%';
+        videoFrame.style.height = '100%';
+        videoFrame.style.zIndex = '10';
+        videoCover.style.opacity = '0';
+        videoCover.style.pointerEvents = 'none';
+        this.innerHTML = '<span class="btn-text">Двигатель запущен</span>';
+      }, 2500);
+    });
+    
+    // Анимация цифр
+    const specs = {
+      hp: { value: 0, target: 617, element: document.getElementById('hpValue') },
+      speed: { value: 0, target: 3.4, element: document.getElementById('speedValue') },
+      torque: { value: 0, target: 750, element: document.getElementById('torqueValue') }
+    };
+    
+    const animateSpecs = () => {
+      let completed = true;
+      
+      for (const key in specs) {
+        const spec = specs[key];
+        if (spec.value < spec.target) {
+          spec.value += Math.ceil(spec.target / 50);
+          if (spec.value > spec.target) spec.value = spec.target;
+          spec.element.textContent = key === 'speed' ? spec.value.toFixed(1) : spec.value;
+          completed = false;
+        }
+      }
+      
+      if (!completed) {
+        requestAnimationFrame(animateSpecs);
+      }
+    };
+    
+    // Запускаем анимацию цифр при появлении секции
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        animateSpecs();
+        observer.disconnect();
+      }
+    }, { threshold: 0.5 });
+    
+    observer.observe(document.querySelector('.bmw-power-section'));
   });
