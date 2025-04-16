@@ -124,10 +124,10 @@
 
 
 
-    <!-- слайдер -->
+    <!-- слайдер
     <div class="container-fluid m5-section">
       <div class="row">
-        <!-- Слайдер (левый блок) -->
+        
         <div class="col-md-6 slider-container">
           <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
             <div class="carousel-inner">
@@ -155,7 +155,7 @@
           </div>
         </div>
     
-        <!-- Описание (правый блок) -->
+        
         <div class="col-md-6 description-container">
           <h2 id="description-title"></h2>
           <p id="description-text"></p>
@@ -163,7 +163,68 @@
         </div>
       </div>
     </div>
+    </div> -->
+
+<!-- слайдер -->
+<div class="container-fluid m5-section">
+  <div class="row">
+    <!-- Слайдер (левый блок) -->
+    <div class="col-md-6 slider-container">
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-index="0">
+            <img src="img/внутренняя1.png" class="d-block w-100" alt="Интерьер 1">
+          </div>
+          <div class="carousel-item" data-index="1">
+            <img src="img/внутреняя2.png" class="d-block w-100" alt="Интерьер 2">
+          </div>
+          <div class="carousel-item" data-index="2">
+            <img src="img/внешняя1.png" class="d-block w-100" alt="Экстерьер 1">
+          </div>
+          <div class="carousel-item" data-index="3">
+            <img src="img/внешняя2.png" class="d-block w-100" alt="Экстерьер 2">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Предыдущий</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Следующий</span>
+        </button>
+      </div>
     </div>
+
+    <!-- Правый блок (разделен на верх и низ) -->
+    <div class="col-md-6 right-section">
+      <!-- Верхний блок с описанием -->
+      <div class="description-container">
+        <h2 id="description-title">BMW M5 Competition</h2>
+        <p id="description-text" class="lead">Легендарный спортивный седан с характером</p>
+        <ul id="description-list" class="features-list">
+          <li>4.4 л V8 Biturbo, 625 л.с.</li>
+          <li>Разгон 0-100 км/ч за 3.3 с</li>
+          <li>Полный привод M xDrive</li>
+          <li>Эксклюзивный интерьер</li>
+        </ul>
+      </div>
+      
+      <!-- Нижний блок с дополнительным контентом -->
+      <div class="additional-content">
+        <div class="special-offer">
+          <h3>Специальное предложение!</h3>
+          <div class="offer-timer">
+            <i class="fas fa-clock"></i>
+            <span id="countdown">23:59:59</span>
+          </div>
+          <p class="offer-text">При покупке до конца месяца - бесплатное первое ТО и набор аксессуаров M Performance!</p>
+          <button class="btn btn-primary cta-button">Оставить заявку</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

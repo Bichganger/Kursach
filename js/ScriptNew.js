@@ -102,53 +102,103 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /*Слайдер2*/
-const descriptions = [
-    {
-        title: "Роскошный интерьер",
-        text: "Испытайте непревзойденный комфорт благодаря высококачественным материалам и передовым технологиям.",
-        list: ["Кожаные сиденья", "Панорамная крыша", "Цифровая приборная панель"]
-    },
-    {
-        title: "Современный дизайн",
-        text: "Интерьер, сочетающий в себе элегантность и инновации.",
-        list: ["Светодиодная подсветка", "Умный климат-контроль", "Качественная отделка"]
-    },
-    {
-        title: "Динамичный экстерьер",
-        text: "Спортивный и агрессивный дизайн, который привлекает внимание.",
-        list: ["Аэродинамические линии", "Светодиодные фары", "Спортивные диски"]
-    },
-    {
-        title: "Мощь и стиль",
-        text: "Экстерьер, который подчеркивает характер и производительность.",
-        list: ["Широкие колесные арки", "Двойная выхлопная система", "Спойлер"]
-    }
+// Описания для каждого слайда
+const slideDescriptions = [
+  {
+    title: "Роскошный интерьер",
+    text: "Эксклюзивная отделка салона с кожаными сиденьями Merino и алюминиевыми вставками",
+    features: [
+      "Кожа Merino премиум-класса",
+      "Эргономичные спортивные сиденья с подогревом",
+      "Панорамная стеклянная крыша",
+      "4-зонный климат-контроль"
+    ]
+  },
+  {
+    title: "Инновационные технологии",
+    text: "Передовые системы для комфорта и безопасности",
+    features: [
+      "Цифровая приборная панель 12.3\"",
+      "Проекционный дисплей",
+      "Премиум аудиосистема Harman Kardon",
+      "Пакет驾驶ассистентов"
+    ]
+  },
+  {
+    title: "Агрессивный экстерьер",
+    text: "Узнаваемый спортивный дизайн с элементами M Performance",
+    features: [
+      "Характерные воздухозаборники",
+      "19\" легкосплавные диски M",
+      "Четырехтрубная выхлопная система",
+      "Адаптивные LED-фары"
+    ]
+  },
+  {
+    title: "Непревзойденная динамика",
+    text: "Идеальный баланс мощности и управляемости",
+    features: [
+      "4.4 л V8 Biturbo 625 л.с.",
+      "Разгон 0-100 км/ч за 3.3 с",
+      "Активная подвеска M Adaptive",
+      "Керамические тормоза"
+    ]
+  }
 ];
 
-function updateDescription(index) {
-    const description = descriptions[index];
-    document.getElementById('description-title').textContent = description.title;
-    document.getElementById('description-text').textContent = description.text;
-
-    const list = document.getElementById('description-list');
-    list.innerHTML = '';
-    description.list.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        list.appendChild(li);
-    });
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.getElementById('carouselExampleSlidesOnly');
-    carousel.addEventListener('slid.bs.carousel', function(event) {
-        const activeIndex = event.to;
-        updateDescription(activeIndex);
-    });
-
-    updateDescription(0);
+// Обновление описания при смене слайда
+document.getElementById('carouselExampleSlidesOnly').addEventListener('slid.bs.carousel', function(event) {
+  const activeSlide = this.querySelector('.carousel-item.active');
+  const slideIndex = parseInt(activeSlide.getAttribute('data-index'));
+  updateSlideDescription(slideIndex);
 });
 
+// Функция обновления описания
+function updateSlideDescription(index) {
+  const desc = slideDescriptions[index];
+  document.getElementById('description-title').textContent = desc.title;
+  document.getElementById('description-text').textContent = desc.text;
+  
+  const featuresList = document.getElementById('description-list');
+  featuresList.innerHTML = '';
+  desc.features.forEach(feature => {
+    const li = document.createElement('li');
+    li.textContent = feature;
+    featuresList.appendChild(li);
+  });
+}
+
+// Инициализация первого описания
+updateSlideDescription(0);
+
+// Таймер обратного отсчета
+function updateCountdown() {
+  const countdown = document.getElementById('countdown');
+  let [hours, minutes, seconds] = countdown.textContent.split(':').map(Number);
+  
+  seconds--;
+  
+  if (seconds < 0) {
+    seconds = 59;
+    minutes--;
+  }
+  
+  if (minutes < 0) {
+    minutes = 59;
+    hours--;
+  }
+  
+  if (hours < 0) {
+    hours = 23;
+    minutes = 59;
+    seconds = 59;
+  }
+  
+  countdown.textContent = 
+    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+setInterval(updateCountdown, 1000);
 
 
 //анимация галлереи
